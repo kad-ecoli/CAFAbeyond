@@ -8,4 +8,5 @@ In particular, we test the suitability of:
 
 ## Dataset ##
 1. UniProt 2021_02 (April 7, 2021)
-2. UniProt-GOA 
+2. UniProt-GOA [2021-04-08](ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/old/UNIPROT/goa_uniprot_all.gpa.203.gz) and [2020-06-16](ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/old/UNIPROT/goa_uniprot_all.gaf.198.gz)
+3. Gene Ontology [2020-06-01](http://release.geneontology.org/2020-06-01/ontology/go-basic.obo)
