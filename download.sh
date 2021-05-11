@@ -10,3 +10,8 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/old/UNIPROT/goa_uniprot_all.gaf.20
 if [ ! -s "goa_uniprot_all.gaf.203.gz" ];then
     wget ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/UNIPROT/goa_uniprot_all.gaf.gz -O $downloaddir/goa_uniprot_all.gaf.203.gz
 fi
+
+wget "https://www.uniprot.org/uniprot/?query=reviewed:yes&format=list" -O $datadir/swissprot.list
+wget "https://www.uniprot.org/uniref/?query=&fil=identity:0.5&format=list" -O $downloaddir/uniref50.list
+wget "https://www.uniprot.org/uniref/?query=&fil=identity:0.9&format=list" -O $downloaddir/uniref90.list
+wget "https://www.uniprot.org/uniprot/?query=proteome:(reference:yes)&format=list" -O $datadir/reference_proteome.list
