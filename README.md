@@ -44,7 +44,7 @@ We check the number of targets in the whole UniProt-GOA with new annotations at 
 | UniProt            | 214971037 ( 100%) |                                 |                                 |
 
 
-## 2. GO evidence ##
+## 4. GO evidence ##
 
 CAFA1 defined "experimental" annotations slightly differently from subsequent rounds of CAFA:
 
@@ -53,3 +53,5 @@ CAFA1 defined "experimental" annotations slightly differently from subsequent ro
 | CAFA1 | EXP, IDA,      IMP, IGI, IEP, TAS, IC |
 | CAFA2 | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC |
 | CAFA3 | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC |
+
+CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HGI, HEP.
