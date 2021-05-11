@@ -11,19 +11,21 @@ In particular, we test the suitability of:
 * UniProt-GOA [2021-04-08](ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/old/UNIPROT/goa_uniprot_all.gpa.203.gz) and [2020-06-16](ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/old/UNIPROT/goa_uniprot_all.gaf.198.gz)
 * Gene Ontology [2020-06-01](http://release.geneontology.org/2020-06-01/ontology/go-basic.obo)
 
-All analysis are for new GO annotations at t1=20210408 compared to t0=20200616. For section 1, 2, and 3, experimental GO terms are defined the same as in CAFA2 to CAFA4 (EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC). Inclusion of additional types of evidence will be discussed in section 4.
+Unless mentioned otherwise, all analysis are for new GO annotations at t1=20210408 compared to t0=20200616. For section 1, 2, and 3, experimental GO terms are defined the same as in CAFA2 to CAFA4 (EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC). Inclusion of additional types of evidence will be discussed in section 4. Information content (IC) of a term is calculated using annotations at t0.
 
 ## 1. GO term exclusion ##
 
 Currently, GO:0005515 "protein binding" is the only GO term considered for exclusion by CAFA. According to the [CAFA3 report](http://dx.doi.org/10.1186/s13059-019-1835-8), "Protein binding is a highly generalized function description, does not provide more specific information about the actual function of a protein, and in many cases may indicate a non-functional, non-specific binding. If it is the only annotation that a protein has gained, then it is hardly an advance in our understanding of that protein." This deletion is only for removal of MF target if "protein binding" is the only MF leaf term. It does not apply to the assessment of prediction accuracy if the selected target has other MF leaf terms in addition to "protein binding".
 
-We calculte the number of proteins and information content (IC) for two different groups of UniProt proteins with MF terms: those with only "protein binding" and those with other MF terms.
+We calculte the number of proteins and IC for two different groups of UniProt proteins with MF terms: those with only "protein binding" and those with other MF terms.
 Only proteins without prior MF annotations (i.e. NK and LK targets as defined below) are included in this table:
 
-| MF terms                              | Number of proteins | Average IC | Total IC |
-| :--:                                  | :--:               |  :--:      |  :--:    |
-| GO:0005515 only                       |                    |            |          |
-| At least 1 term other than GO:0005515 |                    |            |          |
+| MF terms                              | Number of proteins | Average IC per protein | Total IC |
+| :--:                                  | :--:               |  :--:                  |  :--:    |
+| GO:0005515 only                       |                    |                        |          |
+| At least 1 term other than GO:0005515 |                    |                        |          |
+
+Note that in this section, the IC is calculated using all proteins annotated at t0, including those with "protein binding" as the only MF term.
 
 ## 2. Target type ##
 
