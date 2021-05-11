@@ -32,7 +32,7 @@ CAFA considers two target types:
 * Limited knowledge (LK) targets do have at least one previous experimental annotation, but not for the evaluated GO aspect.
 
 It is of interest to check if another type of target should also be considered:
-* Prior knowledge (PR) targets do have at least one previous experimental annotation for the evaluated GO aspect, but gain an unrelated or a more specific child term in the same GO aspect.
+* Prior knowledge (PK) targets do have at least one previous experimental annotation for the evaluated GO aspect, but gain an unrelated or a more specific child term in the same GO aspect.
 
 We check the number of targets in the whole UniProt-GOA with new annotations at t1=20210408, compared to t0=20200616.
 
