@@ -46,7 +46,7 @@ We check the number of targets in the whole UniProt-GOA with new annotations at 
 
 ## 4. GO evidence ##
 
-CAFA1 defined "experimental" annotations slightly differently from subsequent rounds of CAFA:
+CAFA1 defined "experimental" (EXP) annotations slightly differently from subsequent CAFA rounds:
 
 | CAFA  | Evidence codes considered             |
 | :--:  | :--:                                  |
