@@ -1,5 +1,5 @@
 # CAFA beyond #
-Evaluating the feasibility of expanding the scope of  protein GO prediction in Critical Assessment of Function Annotation (CAFA).
+Evaluating the feasibility of expanding the scope of protein GO annotation in Critical Assessment of Function Annotation (CAFA).
 In particular, we test the suitability of:
 1. Including/excluding certain GO terms, e.g. [GO:0005515 protein binding](https://www.ebi.ac.uk/QuickGO/term/GO:0005515).
 2. Including prior knowledge (PK) targets with existing GO annotation for the evaluated aspect.
