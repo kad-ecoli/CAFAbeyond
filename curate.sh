@@ -10,17 +10,17 @@ cut -f2 -d_ $downloaddir/uniref90.list > $datadir/uniref90.list
 for version in `echo 198 203`;do
     zcat $downloaddir/goa_uniprot_all.gaf.$version.gz |grep -P "(\tEXP\t)|(\tIDA\t)|(\tIPI\t)|(\tIMP\t)|(\tIGI\t)|(\tIEP\t)|(\tTAS\t)|(\tIC\t)|(\tHTP\t)|(\tHDA\t)|(\tHMP\t)|(\tHGI\t)|(\tHEP\t)" | gzip - > $datadir/goa_uniprot_all.gaf.${version}.gz
     $bindir/curate_GAF.py \
-         $datadir/goa_uniprot_all.gaf.${version}.gz \
-         $datadir/goa_uniprot_all.EXP.${version} \
-         $datadir/goa_uniprot_all.EXP.NOT.${version} \
-         $datadir/goa_uniprot_all.HTP.${version} \
-         $datadir/goa_uniprot_all.HTP.NOT.${version} \
-         $datadir/goa_uniprot_all.species.${version}
+            $datadir/goa_uniprot_all.gaf.${version}.gz  \
+            $datadir/goa_uniprot_all.EXP.${version}     \
+            $datadir/goa_uniprot_all.EXP.NOT.${version} \
+            $datadir/goa_uniprot_all.HTP.${version}     \
+            $datadir/goa_uniprot_all.HTP.NOT.${version} \
+            $datadir/goa_uniprot_all.species.${version}
         
-    gzip $datadir/goa_uniprot_all.EXP.${version}
-    gzip $datadir/goa_uniprot_all.EXP.NOT.${version}
-    gzip $datadir/goa_uniprot_all.HTP.${version}
-    gzip $datadir/goa_uniprot_all.HTP.NOT.${version}
+    gzip -f $datadir/goa_uniprot_all.EXP.${version}
+    gzip -f $datadir/goa_uniprot_all.EXP.NOT.${version}
+    gzip -f $datadir/goa_uniprot_all.HTP.${version}
+    gzip -f $datadir/goa_uniprot_all.HTP.NOT.${version}
 
     $bindir/propagate_gaf_terms.py $datadir/go-basic.obo $datadir/goa_uniprot_all.EXP.${version}.gz $datadir/goa_uniprot_all.F.is_a.$version $datadir/goa_uniprot_all.P.is_a.$version data/goa_uniprot_all.C.is_a.$version
 
