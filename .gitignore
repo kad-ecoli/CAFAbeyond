@@ -1,3 +1,7 @@
 *.pyc
 .*.sw*
 __pycache__
+data/reference_proteome.list
+data/swissprot.list
+data/uniref50.list
+data/uniref90.list
