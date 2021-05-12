@@ -33,6 +33,7 @@ CAFA considers two target types:
 * No knowledge (NK) targets do not have any previous experimental annotation.
 * Limited knowledge (LK) targets do have at least one previous experimental annotation, but not for the evaluated GO aspect.
 
+Note that the "protein binding" term is not considered previous annotation.
 It is of interest to check if another type of target should also be considered:
 * Prior knowledge (PK) targets do have at least one previous experimental annotation for the evaluated GO aspect, but gain an unrelated or a more specific child term in the same GO aspect.
 
