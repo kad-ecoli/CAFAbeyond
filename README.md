@@ -18,7 +18,7 @@ Unless mentioned otherwise, all analysis are for new GO annotations at t1=202104
 Currently, GO:0005515 "protein binding" is the only GO term considered for exclusion by CAFA. According to the [CAFA3 report](http://dx.doi.org/10.1186/s13059-019-1835-8), "Protein binding is a highly generalized function description, does not provide more specific information about the actual function of a protein, and in many cases may indicate a non-functional, non-specific binding. If it is the only annotation that a protein has gained, then it is hardly an advance in our understanding of that protein." This deletion is only for removal of MF target if "protein binding" is the only MF leaf term. It does not apply to the assessment of prediction accuracy if the selected target has other MF leaf terms in addition to "protein binding".
 
 We calculte the number of proteins and IC for two different groups of UniProt proteins with MF terms: those with only "protein binding" and those with other MF terms.
-Only proteins without prior MF annotations (i.e. NK and LK targets as defined below) are included in this table:
+Only proteins without any prior MF annotations are included in this table:
 
 | MF terms                              | Number of proteins | Average IC per protein | Total IC |
 | :--:                                  | :--:               |  :--:                  |  :--:    |
