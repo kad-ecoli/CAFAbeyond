@@ -48,7 +48,7 @@ def curate_GAF(infile,outfileEXP,outfileEXPnot,outfileHTP,outfileHTPnot,
         fp=gzip.open(infile,'r')
     else:
         fp=open(infile,'r')
-    EXP_set={'EXP','IDA','IPI','IMP','IGI','IEP'}
+    EXP_set={'EXP','IDA','IPI','IMP','IGI','IEP','TAS','IC'}
     HTP_set={'HTP','HDA',      'HMP','HGI','HEP'}
     for line in fp.read().splitlines():
         if not line.startswith("UniProtKB"):
