@@ -32,3 +32,10 @@ cat $datadir/goa_uniprot_all.species.* |cut -f1|sort|uniq > $datadir/goa_uniprot
 for listfile in `echo swissprot.list uniref50.list uniref90.list reference_proteome.list`;do
     cat $datadir/goa_uniprot_all.species $datadir/$listfile |sort|uniq -c|grep -F " 2 "|grep -ohP "\S+$" > $datadir/${listfile}.overlap
 done
+
+version=198
+$bindir/calculate_ic.py $datadir/go-basic.obo  $datadir/goa_uniprot_all.F.is_a.$version   $datadir/naive.F.with_GO:0005515
+$bindir/calculate_ic.py $datadir/go-basic.obo  $datadir/goa_uniprot_all.P.is_a.$version   $datadir/naive.P
+$bindir/calculate_ic.py $datadir/go-basic.obo  $datadir/goa_uniprot_all.C.is_a.$version   $datadir/naive.C
+grep -vP "\tGO:0003674,GO:0005488,GO:0005515$" $datadir/goa_uniprot_all.F.is_a.$version > $datadir/no_GO:0005515.F.is_a.$version 
+$bindir/calculate_ic.py $datadir/go-basic.obo  $datadir/no_GO:0005515.F.is_a.$version     $datadir/naive.F
