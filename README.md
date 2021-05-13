@@ -50,7 +50,7 @@ We check the number of targets (average per-target IC) in the whole UniProt-GOA 
 | All 3     | 3716 ( 9.836) | 1509 ( 8.668) | 8059 ( 7.588) |
 
 For the "All 3" row above, if a protein is a target in more than one Aspect, it is counted more than once.
-As shown in the above table, most new annotations are on PK targets with old (and shallower) annotations.
+As shown in the above table, most (60%) new annotations are on PK targets with old (and shallower) annotations.
 The lower but non-trivial average IC for PK targets suggest that while PK targets might be easier to predict that NK and LK targets, they are nontheless not trivial to predict.
 
 ## 3. Target database ##
