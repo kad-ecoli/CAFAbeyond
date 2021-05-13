@@ -49,15 +49,15 @@ if __name__=="__main__":
         oldfile,newfile)
     ic_dict=read_ic(datadir+"/naive.F.with_GO:0005515")
 
-    print("#### NK/LK MF targets with GO:0005515 as the only leaf term ####")
-    print("Number of targets: %d"%(len(protein_binding_only_list)))
+    print("## NK/LK MF targets with GO:0005515 as the only leaf term ##")
+    print("* Number of targets: %d"%(len(protein_binding_only_list)))
     ic_per_target=ic_dict["GO:0003674"]+ic_dict["GO:0005488"]+ \
                   ic_dict["GO:0005515"]
-    print("IC per target: %.6f"%ic_per_target)
-    print("Total IC: %.6f"%(ic_per_target*len(protein_binding_only_list)))
+    print("* IC per target: %.6f"%ic_per_target)
+    print("* Total IC: %.6f"%(ic_per_target*len(protein_binding_only_list)))
     
-    print("#### NK/LK MF targets with at least 1 non-GO:0005515 leaf term ####")
-    print("Number of targets: %d"%(len(non_protein_binding_dict)))
+    print("## NK/LK MF targets with at least 1 non-GO:0005515 leaf term ##")
+    print("* Number of targets: %d"%(len(non_protein_binding_dict)))
     total_ic=0
     missing_term=[]
     for target in non_protein_binding_dict:
@@ -67,5 +67,5 @@ if __name__=="__main__":
             elif not GOterm in missing_term:
                 sys.stderr.write("No IC for term %s\n"%GOterm)
                 missing_term.append(GOterm)
-    print("IC per target: %.6f"%(total_ic/len(non_protein_binding_dict)))
-    print("Total IC: %.6f"%total_ic)
+    print("* IC per target: %.6f"%(total_ic/len(non_protein_binding_dict)))
+    print("* Total IC: %.6f"%total_ic)
