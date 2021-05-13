@@ -40,6 +40,7 @@ def read_ic(naive_file):
         GOterm=items[0]
         ic    =items[3]
         ic_dict[GOterm]=float(ic)
+    fp.close()
     return ic_dict
 
 if __name__=="__main__":
