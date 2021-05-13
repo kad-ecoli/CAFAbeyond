@@ -40,7 +40,7 @@ When defining NK/LK targets, the "protein binding" term is not considered a prev
 It is of interest to check if another type of target should also be considered:
 * Prior knowledge (PK) targets do have at least one previous experimental annotation for the evaluated GO aspect, but gain an unrelated or a more specific child term in the same GO aspect.
 
-We check the number of targets (average per-target IC) in the whole UniProt-GOA with new annotations at t1=20210408, compared to t0=20200616.
+We check the number of targets (average per-target IC) in the whole UniProt-GOA with new annotations at t1=20210408, compared to t0=20200616. When calculating IC for PK targets, only newly annotated terms are considered.
 
 | Proteins  |      NK       |      LK       |     PK        |
 | :--:      |     :--:      |     :--:      |     :--:      |
@@ -51,16 +51,21 @@ We check the number of targets (average per-target IC) in the whole UniProt-GOA 
 
 For the "All 3" row above, if a protein is a target in more than one Aspect, it is counted more than once.
 As shown in the above table, most new annotations are on PK targets with old (and shallower) annotations.
+The lower but non-trivial average IC for PK targets suggest that while PK targets might be easier to predict that NK and LK targets, they are nontheless not trivial to predict.
 
 ## 3. Target database ##
 
-| Database           | Number of entries | New annotations | Proteins with new annotations | Species with new annotations |
-|   :--:             |  :--:             | :--:            | :--:                          | :--:                         |
-| Swiss-Prot         |    564638 (0.26%) |                 |                               |                              |
-| UniRref50          |  50105705 (  23%) |                 |                               |                              |
-| Reference Proteome |  60181258 (  28%) |                 |                               |                              |
-| UniRref90          | 133971487 (  62%) |                 |                               |                              |
-| UniProt            | 214971037 ( 100%) |                 |                               |                              |
+We check, for the five subsets of UniProt (Swiss-Prot proteins from CAFA-selected species, Swiss-Prot, UniRef50, UniProt reference proteome, UniRef90), the coverage of NK/LK/PK targets.
+In the following table, the number of NK+LK+PK targets is larger than the number of proteins with new annotations. This is because, from a CAFA perspective, a single protein with new annotations in more than one GO Aspect is counted as multiple targets.
+
+| Database           | Number of entries  | New annotations | Proteins with new annotations | Species with new annotations | NK targets | LK targets | PK targets |
+|   :--:             |  :--:              | :--:            | :--:                          | :--:                         | :--:       | :--:       | :--:       |
+| CAFA4              |     97999 (0.046%) |                 |                               | 17                           |            |            |            |
+| Swiss-Prot         |    564638 ( 0.26%) |                 |                               |                              |            |            |            |
+| UniRref50          |  50105705 (   23%) |                 |                               |                              |            |            |            |
+| Reference Proteome |  60181258 (   28%) |                 |                               |                              |            |            |            |
+| UniRref90          | 133971487 (   62%) |                 |                               |                              |            |            |            |
+| UniProt            | 214971037 (  100%) |                 |                               |                              |            |            |            |
 
 
 ## 4. GO evidence ##
