@@ -40,14 +40,17 @@ When defining NK/LK targets, the "protein binding" term is not considered a prev
 It is of interest to check if another type of target should also be considered:
 * Prior knowledge (PK) targets do have at least one previous experimental annotation for the evaluated GO aspect, but gain an unrelated or a more specific child term in the same GO aspect.
 
-We check the number of targets in the whole UniProt-GOA with new annotations at t1=20210408, compared to t0=20200616.
+We check the number of targets (average per-target IC) in the whole UniProt-GOA with new annotations at t1=20210408, compared to t0=20200616.
 
-| Proteins  | NK   | LK   | PK   |
-| :--:      | :--: | :--: | :--: |
-| MF        |      |      |      |
-| BP        |      |      |      |
-| CC        |      |      |      |
-| All 3     |      |      |      |
+| Proteins  |      NK       |      LK       |     PK        |
+| :--:      |     :--:      |     :--:      |     :--:      |
+| MF        |  958 ( 8.609) |  809 ( 7.316) | 1708 ( 4.186) |
+| BP        | 1386 (14.960) |  365 (14.937) | 4266 (10.444) |
+| CC        | 1372 ( 5.516) |  335 ( 5.103) | 2085 ( 4.532) |
+| All 3     | 3716 ( 9.836) | 1509 ( 8.668) | 8059 ( 7.588) |
+
+For the "All 3" row above, if a protein is a target in more than one Aspect, it is counted more than once.
+As shown in the above table, most new annotations are on PK targets with old (and shallower) annotations.
 
 ## 3. Target database ##
 
