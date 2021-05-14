@@ -56,7 +56,7 @@ The lower but non-trivial average IC for PK targets suggest that while PK target
 ## 3. Target database ##
 
 We check, for the five subsets of UniProt (Swiss-Prot proteins from CAFA-selected species, Swiss-Prot, UniRef50, UniProt reference proteome, UniRef90), the coverage of NK/LK/PK targets.
-In the following table, the number of NK+LK+PK targets is larger than the number of proteins with new annotations. This is because, from a CAFA perspective, a single protein with new annotations in more than one GO Aspect is counted as multiple targets.
+In the following table, the number of NK+LK+PK targets is larger than the number of proteins with new annotations. This is because, from a CAFA perspective, a single protein with new annotations in more than one GO Aspects is counted as more than one targets.
 
 | Database           | Number of entries | Proteins with new terms | Species with new annotations | NK targets  | LK targets  | PK targets  |
 |   :--:             |  :--:             | :--:                    | :--:                         | :--:        | :--:        | :--:        |
@@ -67,6 +67,7 @@ In the following table, the number of NK+LK+PK targets is larger than the number
 | UniRref90          | 133971487   (62%) | 8238   (80%)            | 320  (83%)                   | 2697  (73%) | 1297  (86%) | 6820  (85%) |
 | UniProt            | 214971037  (100%) | 10270 (100%)            | 387 (100%)                   | 3716 (100%) | 1509 (100%) | 8059 (100%) |
 
+While the CAFA4 dataset already includes the majority (65%) of proteins with new terms, especially LK targets (74%) and PK targets (80%), it only covers a relative small fractions (25% and 4% respectively) of NK targets and species with new annotations. Expansion of CAFA4 dataset to the whole Swiss-Prot and/or UniProt Reference Proteome is needed for more comprehesive assessment of NK targets in more diverse species.
 
 ## 4. GO evidence ##
 
