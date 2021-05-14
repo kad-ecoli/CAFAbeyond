@@ -58,14 +58,14 @@ The lower but non-trivial average IC for PK targets suggest that while PK target
 We check, for the five subsets of UniProt (Swiss-Prot proteins from CAFA-selected species, Swiss-Prot, UniRef50, UniProt reference proteome, UniRef90), the coverage of NK/LK/PK targets.
 In the following table, the number of NK+LK+PK targets is larger than the number of proteins with new annotations. This is because, from a CAFA perspective, a single protein with new annotations in more than one GO Aspect is counted as multiple targets.
 
-| Database           | Number of entries  | Proteins with new terms | Species with new annotations | NK targets | LK targets | PK targets |
-|   :--:             |  :--:              | :--:                    | :--:                         | :--:       | :--:       | :--:       |
-| CAFA4              |     97999 (0.046%) |                         | 17                           |            |            |            |
-| Swiss-Prot         |    564638 ( 0.26%) |                         |                              |            |            |            |
-| UniRref50          |  50105705 (   23%) |                         |                              |            |            |            |
-| Reference Proteome |  60181258 (   28%) |                         |                              |            |            |            |
-| UniRref90          | 133971487 (   62%) |                         |                              |            |            |            |
-| UniProt            | 214971037 (  100%) |                         |                              |            |            |            |
+| Database           | Number of entries  | Proteins with new terms | Species with new annotations | NK targets  | LK targets  | PK targets  |
+|   :--:             |  :--:              | :--:                    | :--:                         | :--:        | :--:        | :--:        |
+| CAFA4              |     97999 (0.046%) | 6666 (65%)              |  15 (  4%)                   |  945 ( 25%) | 1114 ( 74%) | 6485 ( 80%) |
+| Swiss-Prot         |    564638 ( 0.26%) | 7803 (76%)              | 339 ( 88%)                   | 2197 ( 59%) | 1208 ( 80%) | 6925 ( 86%) |
+| UniRref50          |  50105705 (   23%) | 6840 (67%)              | 261 ( 67%)                   | 1945 ( 52%) | 1097 ( 73%) | 5942 ( 74%) |
+| Reference Proteome |  60181258 (   28%) | 9211 (90%)              | 149 ( 39%)                   | 2782 ( 75%) | 1436 ( 95%) | 7548 ( 94%) |
+| UniRref90          | 133971487 (   62%) | 8238 (80%)              | 320 ( 83%)                   | 2697 ( 73%) | 1297 ( 86%) | 6820 ( 85%) |
+| UniProt            | 214971037 (  100%) | 10270 (100%)            | 387 (100%)                   | 3716 (100%) | 1509 (100%) | 8059 (100%) |
 
 
 ## 4. GO evidence ##
