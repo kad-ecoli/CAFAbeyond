@@ -66,7 +66,7 @@ In the following table, the number of NK+LK+PK targets is larger than the number
 | UniRref90          | 133971487   (62%) | 8238   (80%)            | 320  (83%)                   | 2697  (73%) | 1297  (86%) | 6820  (85%) |
 | UniProt            | 214971037  (100%) | 10270 (100%)            | 387 (100%)                   | 3716 (100%) | 1509 (100%) | 8059 (100%) |
 
-Although the CAFA4 dataset already includes the majority (65%) of proteins with new terms, especially LK targets (74%) and PK targets (80%), it only covers a relative small fractions (25% and 4% respectively) of NK targets and species with new annotations. Expansion of CAFA4 dataset to the whole Swiss-Prot and/or UniProt Reference Proteome, if not the whole UniProt, is needed for more comprehesive assessment of NK targets in more diverse species.
+Although the CAFA4 dataset already includes the majority (65%) of proteins with new terms, especially LK targets (74%) and PK targets (80%), it only covers a relative small fractions (25% and 4% respectively) of NK targets and species with new annotations. Expansion of CAFA4 dataset to the whole Swiss-Prot and/or UniProt Reference Proteome, if not the whole UniProt, is needed for more comprehesive assessment of NK targets in more diverse species. While this means many of the included species will have <10 evaluated targets and cannot be used for reliable species-specific statistics, it is not a problem for obtaining an overall, non-specific-specific statistics.
 
 ## 4. GO evidence ##
 
