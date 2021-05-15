@@ -70,15 +70,16 @@ Although the CAFA4 dataset already includes the majority (65%) of proteins with 
 
 ## 4. GO evidence ##
 
-CAFA1 defined "experimental" (EXP) annotations slightly differently from subsequent CAFA rounds:
+Different CAFA rounds defined "experimental" (EXP) annotations slightly differently:
 
-| CAFA  | Evidence codes considered             |
-| :--:  | :--:                                  |
-| CAFA1 | EXP, IDA,      IMP, IGI, IEP, TAS, IC |
-| CAFA2 | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC |
-| CAFA3 | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC |
+| CAFA          | Evidence codes considered                                          |
+| :--:          | :--:                                                               |
+| CAFA1         | EXP, IDA,      IMP, IGI, IEP, TAS, IC                              |
+| CAFA2 & CAFA3 | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC                              |
+| CAFA3         | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC                              |
+| CAFA-PI       | high throughput experiments for GO:0042710, GO:0001539, GO:0007616 |
 
-CAFA3 additionally includes high throughput experiments for term-centric assessment of three terms: GO:0042710 biofilm formation, GO:0001539 cilium or flagellum-dependent cell motility, and GO:0007616 long-term memory. However, CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HGI, HEP.
+CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HGI, HEP. We check how many more proteins, terms, and annotations could have been included if HTP is included in addition to EXP.
 
 | Evidence | Proteins | Terms | Annotations | Average IC per annotation | Average number of proteins per term |
 | :--:     | :--:     | :--:  | :--:        |  :--:                     |  :--:                               |
