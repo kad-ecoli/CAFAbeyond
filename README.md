@@ -81,11 +81,11 @@ Different CAFA rounds defined "experimental" (EXP) annotations slightly differen
 
 CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HGI, HEP. We check how many more proteins, terms, and annotations could have been included if HTP is included in addition to EXP.
 
-| Evidence | Proteins | Terms | Annotations | Average IC per annotation | Average number of proteins per term |
-| :--:     | :--:     | :--:  | :--:        |  :--:                     |  :--:                               |
-| EXP      |          |       |             |                           |                                     |
-| HTP      |          |       |             |                           |                                     |
-| EXP+HTP  |          |       |             |                           |                                     |
+| Evidence | Proteins | Terms | Terms with >=10 proteins | Terms with >=100 proteins | Average IC per annotation |
+| :--:     | :--:     | :--:  | :--:                     |  :--:                     |  :--:                     |
+| EXP      |          |       |                          |                           |                           |
+| HTP      |          |       |                          |                           |                           |
+| EXP+HTP  |          |       |                          |                           |                           |
 
 ## License ##
 
