@@ -48,7 +48,7 @@ if __name__=="__main__":
     newfile=datadir+"/goa_uniprot_all.F.is_a.203"
     protein_binding_only_list,non_protein_binding_dict=make_target(
         oldfile,newfile)
-    ic_dict=read_ic(datadir+"/naive.F.with_GO:0005515")
+    ic_dict=read_ic(datadir+"/naive.F")
 
     print("## NK/LK MF targets with GO:0005515 as the only leaf term ##")
     print("* Number of targets: %d"%(len(protein_binding_only_list)))
