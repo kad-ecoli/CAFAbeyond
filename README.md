@@ -50,7 +50,7 @@ We check the number of targets (average per-target IC) in the whole UniProt-GOA 
 
 For the "All 3" row above, if a protein is a target in more than one Aspect, it is counted more than once.
 As shown in the above table, most (60%) new annotations are on PK targets with old (and shallower) annotations.
-The lower but non-trivial average IC for PK targets suggest that while PK targets might be easier to predict that NK and LK targets, they are nontheless not trivial to predict.
+The lower but non-trivial average IC of 7.588 for PK targets suggest that while PK targets might be easier to predict that NK and LK targets, they are nontheless not trivial to predict. An IC of 7.588 for a GO term corresponding to a posterior probability of only exp(-7.588)=0.0005 for this GO term given that all its parents are present, suggesting that a simple Bayesian approach of propagating the child terms based on previously annotated parent terms is far from sufficient for accurate prediction of PK targets.
 
 ## 3. Target database ##
 
