@@ -24,8 +24,11 @@ for version in `echo $old $new`;do
     gzip -f $datadir/goa_uniprot_all.HTP.${version}
     gzip -f $datadir/goa_uniprot_all.HTP.NOT.${version}
 
-    $bindir/propagate_gaf_terms.py $datadir/go-basic.obo $datadir/goa_uniprot_all.EXP.${version}.gz $datadir/goa_uniprot_all.F.is_a.$version $datadir/goa_uniprot_all.P.is_a.$version data/goa_uniprot_all.C.is_a.$version
-
+    $bindir/propagate_gaf_terms.py $datadir/go-basic.obo \
+            $datadir/goa_uniprot_all.EXP.${version}.gz   \
+	    $datadir/goa_uniprot_all.F.is_a.$version     \
+	    $datadir/goa_uniprot_all.P.is_a.$version     \
+	    $datadir/goa_uniprot_all.C.is_a.$version
 done
 
 
