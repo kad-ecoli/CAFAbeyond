@@ -13,6 +13,17 @@ In particular, we test the suitability of:
 
 Unless mentioned otherwise, all analysis are for new GO annotations at t1=20210408 compared to t0=20200616. For section 1, 2, and 3, experimental GO terms are defined the same as in CAFA2 to CAFA4 (EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC). Inclusion of additional types of evidence will be discussed in section 4. Information content (IC) of a term is calculated using annotations at t0 with evidence codes EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC.
 
+## Run the analysis ##
+This repository already include pre-generated result. If you want to reproduce the result included herein, execute the following commands:
+```bash
+./download.sh
+./curate.sh
+cd 1_exclude_protein_binding/; ./main.py > readme.md ; cd ..
+cd 2_target_type/            ; ./main.py > readme.md ; cd ..
+cd 3_target_database/        ; ./main.py > readme.md ; cd ..
+cd 4_HTP/                    ; ./main.sh             ; cd ..
+```
+
 ## [1. GO term exclusion](1_exclude_protein_binding/) ##
 
 Currently, GO:0005515 "protein binding" is the only GO term considered for exclusion by CAFA. According to the [CAFA3 report](http://dx.doi.org/10.1186/s13059-019-1835-8), "Protein binding is a highly generalized function description, does not provide more specific information about the actual function of a protein, and in many cases may indicate a non-functional, non-specific binding. If it is the only annotation that a protein has gained, then it is hardly an advance in our understanding of that protein." This deletion is only for removal of MF target if "protein binding" is the only MF leaf term. It does not apply to the assessment of prediction accuracy if the selected target has other MF leaf terms in addition to "protein binding".
