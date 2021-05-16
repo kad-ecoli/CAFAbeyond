@@ -29,7 +29,7 @@ As shown in the above table, whether or not "protein binding" exclusion must be 
 For non-IC-based evaluation metrics, e.g. precision-recall and Fmax, "protein binding"-only targets must be excluded as they would have account for 43.5% of all MF targets.
 For IC-weighted evaluation metrics. e.g. MI-RU and Smin, removal of "protein binding"-only target is optional (but probably still advantageous), as they account for only 6.2% of total IC of all MF targets. This is an IC difference large enough to affect the ranking of different predictors. In [CAFA3](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1835-8/figures/4), for example, the first and second ranked predictor only differs by ~3% in terms of Smin for MF prediction. Therefore, in the following section, we will not consider the MF aspect annotated if "protein binding" is the only leaf term.
 
-## 2. Target type ##
+## [2. Target type](2_target_type) ##
 
 CAFA considers two target types:
 * No knowledge (NK) targets do not have any previous experimental annotation.
@@ -52,7 +52,7 @@ For the "All 3" row above, if a protein is a target in more than one Aspect, it 
 As shown in the above table, most (60%) new annotations are on PK targets with old (and shallower) annotations.
 The lower but non-trivial average IC of 7.588 for PK targets suggest that while PK targets might be easier to predict that NK and LK targets, they are nontheless not trivial to predict. An IC of 7.588 for a GO term corresponding to a posterior probability of only exp(-7.588)=0.0005 for this GO term given that all its parents are present, suggesting that a simple Bayesian approach of propagating the child terms based on previously annotated parent terms is far from sufficient for accurate prediction of PK targets.
 
-## 3. Target database ##
+## [3. Target database](3_target_database) ##
 
 We check, for the five subsets of UniProt (Swiss-Prot proteins from CAFA-selected species, Swiss-Prot, UniRef50, UniProt reference proteome, UniRef90), the coverage of NK/LK/PK targets.
 In the following table, the number of NK+LK+PK targets is larger than the number of proteins with new annotations. This is because, from a CAFA perspective, a single protein with new annotations in more than one GO Aspects is counted as more than one targets.
@@ -68,7 +68,7 @@ In the following table, the number of NK+LK+PK targets is larger than the number
 
 Although the CAFA4 dataset already includes the majority (65%) of proteins with new terms, especially LK targets (74%) and PK targets (80%), it only covers a relative small fractions (25% and 4% respectively) of NK targets and species with new annotations. Expansion of CAFA4 dataset to the whole Swiss-Prot and/or UniProt Reference Proteome, if not the whole UniProt, is needed for more comprehesive assessment of NK targets in more diverse species. While this means many of the included species will have <10 evaluated targets and cannot be used for reliable species-specific statistics, it is not a problem for obtaining overall statistics across all species.
 
-## 4. GO evidence ##
+## [4. GO evidence](4_HTP) ##
 
 Different CAFA rounds defined "experimental" (EXP) annotations slightly differently:
 
@@ -81,13 +81,13 @@ Different CAFA rounds defined "experimental" (EXP) annotations slightly differen
 
 CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HGI, HEP. We check how many more proteins, terms, and annotations could have been included if HTP is included in addition to EXP.
 
-| Evidence | Proteins | Terms | Terms with >=10 proteins | Terms with >=100 proteins | Average IC per annotation |
-| :--:     | :--:     | :--:  | :--:                     |  :--:                     |  :--:                     |
-| EXP      |          |       |                          |                           |                           |
-| HTP      |          |       |                          |                           |                           |
-| EXP+HTP  |          |       |                          |                           |                           |
+| Evidence | MF targets | BP targets | CC targets |
+| :--:     | :--:       | :--:       | :--:       |
+| EXP      | 3475       | 6017       | 3792       |
+| HTP      |   24       |   70       |  128       |
+| EXP+HTP  | 3477       | 6077       | 3750       |
 
-Some targets defined solely by an EXP evidence may not be a valid target defined by EXP+HTP evidences due to existence of old HTP annotations later confirmed by EXP evidence. For example, O74456 was annotated with GO:0005634 "nucleus" at t0 by HDA evidence; at t0, GO:0005634 is annotated to O74456 by both HDA and IPI evidence. Therefore, if HTP is not considered, O74456 is a valid CC target for prediction of GO:0005634, even if this term was already present at t0.
+The exclusion of HTP annotation denies the inclusion of certain targets for term-centric assessment, which was based on high throughput experiments previously, e.g. in CAFA-PI. More importantly, it creates problems for protein-centric assessment as well. Some targets defined solely by an EXP evidence may not be a valid target defined by EXP+HTP evidences due to existence of old HTP annotations later confirmed by EXP evidence, especially in the case of CC as shown above. For example, O74456 was annotated with CC term GO:0005634 "nucleus" at t0 by HDA evidence; at t0, GO:0005634 is annotated to O74456 by both HDA and IPI evidence. Therefore, if HTP is not considered, O74456 is a valid CC target for prediction of GO:0005634, even though this term was already present at t0.
 
 ## License ##
 
