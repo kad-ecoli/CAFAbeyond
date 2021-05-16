@@ -87,6 +87,8 @@ CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HG
 | HTP      |          |       |                          |                           |                           |
 | EXP+HTP  |          |       |                          |                           |                           |
 
+Some targets defined solely by an EXP evidence may not be a valid target defined by EXP+HTP evidences due to existence of old HTP annotations later confirmed by EXP evidence. For example, O74456 was annotated with GO:0005634 "nucleus" at t0 by HDA evidence; at t0, GO:0005634 is annotated to O74456 by both HDA and IPI evidence. Therefore, if HTP is not considered, O74456 is a valid CC target for prediction of GO:0005634, even if this term was already present at t0.
+
 ## License ##
 
 This program is free software: you can redistribute it and/or modify it under
