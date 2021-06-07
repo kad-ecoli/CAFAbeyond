@@ -87,7 +87,6 @@ Different CAFA rounds defined "experimental" (EXP) annotations slightly differen
 | :--:          | :--:                                                               |
 | CAFA1         | EXP, IDA,      IMP, IGI, IEP, TAS, IC                              |
 | CAFA2 & CAFA3 | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC                              |
-| CAFA3         | EXP, IDA, IPI, IMP, IGI, IEP, TAS, IC                              |
 | CAFA-PI       | high throughput experiments for GO:0042710, GO:0001539, GO:0007616 |
 
 CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HGI, HEP. We check how many more proteins, terms, and annotations could have been included if HTP is included in addition to EXP.
