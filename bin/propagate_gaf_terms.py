@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 docstring='''
-propagate_gaf_term.py go-basic.obo goa_uniprot_all.gaf.gz goa_uniprot_all.F.is_a goa_uniprot_all.P.is_a goa_uniprot_all.C.is_a
+propagate_gaf_terms.py go-basic.obo goa_uniprot_all.gaf.gz goa_uniprot_all.F.is_a goa_uniprot_all.P.is_a goa_uniprot_all.C.is_a
     propagate parent GO terms for GAF format GO annotation from 
     goa_uniprot_all.gaf.gz output full sets of GO term to 
     goa_uniprot_all.F.is_a, goa_uniprot_all.P.is_a, goa_uniprot_all.C.is_a
@@ -9,7 +9,7 @@ import sys
 import obo2csv # parsing GO hierachy
 import gzip
 
-def propagate_gaf_term(obo_dict,infile,outfile_dict):
+def propagate_gaf_terms(obo_dict,infile,outfile_dict):
     allterm_dict=dict(F=dict(),P=dict(),C=dict())
     missing_GO_list=[]
     
@@ -65,4 +65,4 @@ if __name__=="__main__":
     outfile_dict['C']=sys.argv[5]
 
     obo_dict=obo2csv.parse_obo_file(obo_file)
-    propagate_gaf_term(obo_dict,infile,outfile_dict)
+    propagate_gaf_terms(obo_dict,infile,outfile_dict)
