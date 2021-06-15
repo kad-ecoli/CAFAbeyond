@@ -5,6 +5,7 @@ In particular, we test the suitability of:
 2. Including prior knowledge (PK) targets with existing GO annotation for the evaluated aspect.
 3. Expanding target source from a few selected model organisms to the whole [Swiss-Prot](https://www.uniprot.org/uniprot/?query=reviewed:yes), [UniRef50](https://www.uniprot.org/uniref/?query=&fil=identity:0.5), [UniRef90](https://www.uniprot.org/uniref/?query=&fil=identity:0.9), or [UniProt reference proteome](https://www.uniprot.org/uniprot/?query=proteome%3a(reference%3ayes)).
 4. Including GO annotations with high-throughput experimental evidences, as well as UniProt keyword-derived IEA terms associated with experimental literature.
+5. Implementation of alternative baseline methods.
 
 ## Dataset ##
 * UniProt 2021_02 (April 7, 2021)
@@ -98,6 +99,10 @@ CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HG
 | EXP+HTP  | 3477       | 6077       | 3750       |
 
 The exclusion of HTP annotation denies the inclusion of certain targets for term-centric assessment, which was based on high throughput experiments previously, e.g. in CAFA-PI. More importantly, it creates problems for protein-centric assessment as well. Some targets defined solely by an EXP evidence may not be a valid target defined by EXP+HTP evidences due to existence of old HTP annotations later confirmed by EXP evidence, especially in the case of CC as shown above. For example, O74456 was annotated with CC term GO:0005634 "nucleus" at t0 by HDA evidence; at t0, GO:0005634 is annotated to O74456 by both HDA and IPI evidence. Therefore, if HTP is not considered, O74456 is a valid CC target for prediction of GO:0005634, even though this term was already present at t0.
+
+## [5. Baseline](https://github.com/kad-ecoli/baseline) ##
+
+See [our repo](https"//github.com/kad-ecoli/baseline) for alternative implementation of baseline methods.
 
 ## License ##
 
