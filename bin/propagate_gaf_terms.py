@@ -20,7 +20,7 @@ def propagate_gaf_terms(obo_dict,infile,outfile_dict):
     lines=fp.read().splitlines()
     fp.close()
     for line in lines:
-        items=line.split('\t')
+        items=line.decode("utf-8").split('\t')
         DB_Object_ID=items[1]
         GO_ID=items[4]
         Aspect=items[8]

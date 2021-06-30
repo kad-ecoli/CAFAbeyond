@@ -30,8 +30,9 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict):
                 continue
             goa_new_dict[Aspect][target]=GOterms
         fp.close()
-    target_old_set=set(goa_old_dict['F'].keys()+ \
-                       goa_old_dict['P'].keys()+goa_old_dict['C'].keys())
+    target_old_set=set(list(goa_old_dict['F'].keys())+ \
+                       list(goa_old_dict['P'].keys())+ \
+                       list(goa_old_dict['C'].keys()))
 
     #### make NK target ####
     NK_target_list=[]
