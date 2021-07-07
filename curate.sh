@@ -44,7 +44,7 @@ $bindir/calculate_ic.py $datadir/go-basic.obo  $datadir/goa_uniprot_all.C.is_a.$
 grep -vP "\tGO:0003674,GO:0005488,GO:0005515$" $datadir/goa_uniprot_all.F.is_a.$old > $datadir/no_GO:0005515.F.is_a.$old
 $bindir/calculate_ic.py $datadir/go-basic.obo  $datadir/no_GO:0005515.F.is_a.$old     $datadir/naive.F
 
-$bindir/bin/make_target.py \
+$bindir/make_target.py \
     $datadir/goa_uniprot_all.F.is_a.$old \
     $datadir/goa_uniprot_all.P.is_a.$old \
     $datadir/goa_uniprot_all.C.is_a.$old \
