@@ -8,3 +8,4 @@ data/uniref90.list
 data/goa_uniprot_all.species
 data/no_GO:0005515.F.is_a.*
 data/goa_uniprot_all.gaf.*.gz
+5_baseline/*_all.txt
