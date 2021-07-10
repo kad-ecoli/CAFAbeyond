@@ -29,3 +29,10 @@ for target in `cat $inputdir/target.list`;do
     grep -P "^$target\t" $inputdir/target.species
 done > $inputdir/target.species.tmp
 mv $inputdir/target.species.tmp $inputdir/target.species
+$bindir/posterior_training_terms.py $datadir/go-basic.obo $datadir/uniprot_sprot_exp.F $datadir/posterior.F
+$bindir/posterior_training_terms.py $datadir/go-basic.obo $datadir/uniprot_sprot_exp.P $datadir/posterior.P
+$bindir/posterior_training_terms.py $datadir/go-basic.obo $datadir/uniprot_sprot_exp.C $datadir/posterior.C
+for target in `cut -f1 $datadir/PK.*|sort|uniq`;do
+    GOterms=`grep -P "^$target\t" $datadir/PK.*|cut -f3|paste -sd,`
+    echo $target $GOterms
+done | sed 's/ /\t/g' > $inputdir/target.PK
