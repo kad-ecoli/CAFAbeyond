@@ -7,6 +7,7 @@ inputdir="$rootdir/input"
 bindir="$rootdir/bin"
 
 cd $curdir/
+$bindir/predict_posterior.py $inputdir/target.list $inputdir/target.PK naive_3_all.txt
 $bindir/predict_blastbitscore.py $inputdir/target.fasta _all.txt
 $bindir/predict_blast.py $inputdir/target.fasta _all.txt 
 $bindir/predict_naive.py $inputdir/target.species _all.txt 

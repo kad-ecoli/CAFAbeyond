@@ -1,6 +1,13 @@
 #!/usr/bin/env python
 docstring='''predict_naive.py target.species _all.txt 
-    use naive baseline to predict GO terms for input file target.fasta,
+    use naive baseline to predict GO terms for input file target.species
+
+Input:
+    target.species - list of target and taxonID
+
+Output:
+    naive_1_all.txt - generic naive baseline
+    naive_2_all.txt - species specific naive baseline
 '''
 import sys
 from os.path import dirname, basename, abspath, isfile

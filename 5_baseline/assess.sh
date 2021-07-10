@@ -10,6 +10,7 @@ cd $curdir/
 
 method_list="naive_1
 naive_2
+naive_3
 goa_1
 blastlocalID_1
 blastglobalID_1

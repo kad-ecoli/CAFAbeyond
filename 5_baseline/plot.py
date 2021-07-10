@@ -11,6 +11,7 @@ rootdir=dirname(resultdir)
 method_list=[
     ("naive_1"        ,"naive1"        ),
     ("naive_2"        ,"naive2"        ),
+    ("naive_3"        ,"naive3"        ),
     ("goa_1"          ,"uniprot\ngoa"  ),
     ("blastevalue_1"  ,"blast\nevalue" ),
     ("blastlocalID_1" ,"blast\nlocal"  ),
