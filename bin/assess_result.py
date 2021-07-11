@@ -86,47 +86,72 @@ def read_prediction(obo_dict,infile,label_dict):
 def sum_ic(GOterm_list,ic_dict):
     return sum([ic_dict[GOterm] for GOterm in GOterm_list if GOterm in ic_dict])
     
+def dot_product(list1,list2):
+    if len(list1)!=len(list2):
+        sys.stderr.write("ERROR! unequal list length\n")
+        exit(1)
+    return sum([list1[i]*list2[i] for i in range(len(list1))])
 
 def assess_result(label_dict,ic_dict,predict_dict,outfile):
-    txt="Aspect\tType\tMode\tFmax\tCutoff\tSmin\tCutoff\twFmax\tCutoff\tCoverage\n"
+    txt="Aspect\tType\tMode\tFmax\tCutoff\tSmin\tCutoff\twFmax\tCutoff\tF'max\tCutoff\tS'min\tCutoff\twF'max\tCutoff\tCoverage\n"
     aspect_dict=dict(F="mfo",P="bpo",C="cco")
     for Aspect in "FPC":
         ontology=aspect_dict[Aspect]
         for target_type in target_type_list:
             Fmax=0
-            Cutoff1=0
+            Cutoff_F=0
             Smin=0
-            Cutoff2=1
+            Cutoff_S=1
             wFmax=0
-            Cutoff3=0
+            Cutoff_wF=0
+            Fpmax=0
+            Cutoff_Fp=0
+            Spmin=0
+            Cutoff_Sp=1
+            wFpmax=0
+            Cutoff_wFp=0
             total_label=len(label_dict[target_type][Aspect])
             Coverage=1.*len(predict_dict[target_type][Aspect])/total_label
             cscore_list=[]
             label_ic_dict=dict()
+            target_ic_list=[]
             for target in label_dict[target_type][Aspect]:
                 label_ic_dict[target]=sum_ic(
                     label_dict[target_type][Aspect][target][0],ic_dict)
-                Smin+=label_ic_dict[target]
-            Smin/=total_label
+                target_ic_list.append(label_ic_dict[target])
+            sum_target_ic=sum(target_ic_list)
+            Smin=sum_target_ic/total_label
+            Spmin=dot_product(target_ic_list,target_ic_list)/sum_target_ic
+            target_weight_list=[target_ic/sum_target_ic for target_ic in target_ic_list]
             for target,GOterms in predict_dict[target_type][Aspect].items():
                 cscore_list+=[cscore for GOterm,cscore in GOterms]
             cscore_list=sorted(set(cscore_list))
             for cutoff in cscore_list:
-                total_precision=0
-                total_recall=0
+                total_precision_list=[]
+                total_recall_list=[]
                 total_predict=0
-                total_wprecision=0
-                total_wrecall=0
-                total_ru=0
-                total_mi=0
+                total_wprecision_list=[]
+                total_wrecall_list=[]
+                total_ru_list=[]
+                total_mi_list=[]
                 for target in label_dict[target_type][Aspect]:
                     if not target in predict_dict[target_type][Aspect]:
-                        total_ru+=label_ic_dict[target]
+                        total_precision_list.append(0)
+                        total_recall_list.append(0)
+                        total_wprecision_list.append(0)
+                        total_wrecall_list.append(0)
+                        total_ru_list.append(label_ic_dict[target])
+                        total_mi_list.append(0)
                         continue
                     predict_list=[GOterm for GOterm,cscore in predict_dict[
                         target_type][Aspect][target] if cscore>=cutoff]
                     if len(predict_list)==0:
-                        total_ru+=label_ic_dict[target]
+                        total_precision_list.append(0)
+                        total_recall_list.append(0)
+                        total_wprecision_list.append(0)
+                        total_wrecall_list.append(0)
+                        total_ru_list.append(label_ic_dict[target])
+                        total_mi_list.append(0)
                         continue
                     label_set=label_dict[target_type][Aspect][target][0]
                     total_predict+=1
@@ -137,39 +162,63 @@ def assess_result(label_dict,ic_dict,predict_dict,outfile):
                     wprecision=0 if wpredict==0 else wtp/wpredict
                     recall=1.*len(tp)/len(label_set)
                     wrecall=0 if label_ic_dict[target]==0 else wtp/label_ic_dict[target]
-                    total_precision+=precision
-                    total_recall+=recall
-                    total_wprecision+=wprecision
-                    total_wrecall+=wrecall
+                    total_precision_list.append(precision)
+                    total_recall_list.append(recall)
+                    total_wprecision_list.append(wprecision)
+                    total_wrecall_list.append(wrecall)
+                    total_mi=0
                     for GOterm in predict_list:
                         if GOterm in ic_dict and not GOterm in label_set:
                             total_mi+=ic_dict[GOterm]
+                    total_mi_list.append(total_mi)
+                    total_ru=0
                     for GOterm in label_set:
                         if GOterm in ic_dict and not GOterm in predict_list:
                             total_ru+=ic_dict[GOterm]
+                    total_ru_list.append(total_ru)
                 total_label=len(label_dict[target_type][Aspect])
-                precision=0 if total_predict==0 else total_precision/total_predict
-                wprecision=0 if total_predict==0 else total_wprecision/total_predict
-                recall   =total_recall/total_label
-                wrecall  =total_wrecall/total_label
-                mi       =total_mi/total_label
-                ru       =total_ru/total_label
+                precision =0 if total_predict==0 else sum(total_precision_list)/total_predict
+                wprecision=0 if total_predict==0 else sum(total_wprecision_list)/total_predict
+                recall   =sum(total_recall_list)/total_label
+                wrecall  =sum(total_wrecall_list)/total_label
+                mi       =sum(total_mi_list)/total_label
+                ru       =sum(total_ru_list)/total_label
+                precisionp =dot_product(target_weight_list,total_precision_list)
+                wprecisionp=dot_product(target_weight_list,total_wprecision_list)
+                recallp    =dot_product(target_weight_list,total_recall_list)
+                wrecallp   =dot_product(target_weight_list,total_wrecall_list)
+                mip        =dot_product(target_weight_list,total_mi_list)
+                rup        =dot_product(target_weight_list,total_ru_list)
 
-                F=0 if precision*recall==0 else 2/(1/precision+1/recall)
-                wF=0 if wprecision*wrecall==0 else 2/(1/wprecision+1/wrecall)
-                S=sqrt(ru*ru+mi*mi)
+                F  =0 if  precision * recall ==0 else 2/(1/ precision +1/ recall )
+                wF =0 if wprecision *wrecall ==0 else 2/(1/wprecision +1/wrecall )
+                S  =sqrt(ru *ru +mi *mi )
+                Fp =0 if  precisionp* recallp==0 else 2/(1/ precisionp+1/ recallp)
+                wFp=0 if wprecisionp*wrecallp==0 else 2/(1/wprecisionp+1/wrecallp)
+                Sp =sqrt(rup*rup+mip*mip)
                 if F>=Fmax:
                     Fmax=F
-                    Cutoff1=cutoff
+                    Cutoff_F=cutoff
                 if S<=Smin:
                     Smin=S
-                    Cutoff2=cutoff
+                    Cutoff_S=cutoff
                 if wF>=wFmax:
                     wFmax=wF
-                    Cutoff3=cutoff
-            txt+="%s\t%s\tfull\t%.4f\t%.2f\t%.4f\t%.2f\t%.4f\t%.2f\t%.4f\n"%(
+                    Cutoff_wF=cutoff
+                if Fp>=Fpmax:
+                    Fpmax=Fp
+                    Cutoff_Fp=cutoff
+                if Sp<=Spmin:
+                    Spmin=Sp
+                    Cutoff_Sp=cutoff
+                if wFp>=wFpmax:
+                    wFpmax=wFp
+                    Cutoff_wFp=cutoff
+            txt+="%s\t%s\tfull\t%.4f\t%.2f\t%.4f\t%.2f\t%.4f\t%.2f\t"%(
                 ontology,target_type.upper(),
-                Fmax,Cutoff1,Smin,Cutoff2,wFmax,Cutoff3,Coverage)
+                Fmax,Cutoff_F,Smin,Cutoff_S,wFmax,Cutoff_wF
+                )+"%.4f\t%.2f\t%.4f\t%.2f\t%.4f\t%.2f\t%.4f\n"%(
+                Fpmax,Cutoff_Fp,Spmin,Cutoff_Sp,wFpmax,Cutoff_wFp,Coverage)
     fp=open(outfile,'w')
     fp.write(txt)
     fp.close()
