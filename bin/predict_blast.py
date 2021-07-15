@@ -52,7 +52,7 @@ def run_blast(infile):
             nident/qlen,               # globalID1
             nident/slen,               # globalID2
             nident/max(qlen,slen),     # globalID3
-            1-1/(1+exp(-evalue)),      # evalue
+            2*exp(-evalue)/(1+exp(-evalue)), # evalue
             -1.*len(blast_dict[qacc]), # ranking
             1.,                        # freq
             nident/qlen,               # MetaGO
