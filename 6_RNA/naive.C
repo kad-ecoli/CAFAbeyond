@@ -1,0 +1,126 @@
+GO:0005575	1.000000	0.000000	0.000000	cellular_component
+GO:0110165	0.829446	0.186997	0.186997	cellular anatomical entity
+GO:0043226	0.432945	0.837145	0.650148	organelle
+GO:0043229	0.373178	0.985700	0.148555	intracellular organelle
+GO:0032991	0.342566	1.071292	1.071292	protein-containing complex
+GO:1990904	0.335277	1.092798	0.021506	ribonucleoprotein complex
+GO:0043227	0.288630	1.242611	0.405465	membrane-bounded organelle
+GO:0043231	0.233236	1.455704	0.000000	intracellular membrane-bounded organelle
+GO:0005829	0.211370	1.554144	1.367147	cytosol
+GO:0005634	0.157434	1.848746	0.393043	nucleus
+GO:0016442	0.151603	1.886487	0.000000	RISC complex
+GO:0031332	0.151603	1.886487	0.793688	RNAi effector complex
+GO:0043232	0.145773	1.925707	0.000000	intracellular non-membrane-bounded organelle
+GO:0043228	0.145773	1.925707	1.088562	non-membrane-bounded organelle
+GO:0005732	0.122449	2.100061	1.007263	small nucleolar ribonucleoprotein complex
+GO:0005730	0.119534	2.124158	0.198451	nucleolus
+GO:0005737	0.090379	2.403743	2.216746	cytoplasm
+GO:1902494	0.081633	2.505526	1.434234	catalytic complex
+GO:0005739	0.077259	2.560586	1.104882	mitochondrion
+GO:0031428	0.069971	2.659677	0.559616	box C/D snoRNP complex
+GO:0016604	0.069971	2.659677	2.472679	nuclear body
+GO:0005615	0.061224	2.793208	2.606211	extracellular space
+GO:1903561	0.059767	2.817306	0.000000	extracellular vesicle
+GO:0031982	0.059767	2.817306	1.574695	vesicle
+GO:0043230	0.059767	2.817306	1.980160	extracellular organelle
+GO:0070062	0.058309	2.841998	0.024693	extracellular exosome
+GO:0072588	0.052478	2.947359	0.847298	box H/ACA RNP complex
+GO:0031429	0.043732	3.129680	0.064539	box H/ACA snoRNP complex
+GO:0015030	0.039359	3.235041	0.575364	Cajal body
+GO:1990234	0.030612	3.486355	0.980829	transferase complex
+GO:0005694	0.023324	3.758289	1.832581	chromosome
+GO:0000805	0.021866	3.822827	0.000000	X chromosome
+GO:0000803	0.021866	3.822827	0.064539	sex chromosome
+GO:0045202	0.018950	3.965928	0.000000	synapse
+GO:0030054	0.018950	3.965928	3.778931	cell junction
+GO:0000123	0.017493	4.045971	0.000000	histone acetyltransferase complex
+GO:0016456	0.017493	4.045971	0.000000	X chromosome located dosage compensation complex, transcription activating
+GO:0031248	0.017493	4.045971	0.000000	protein acetyltransferase complex
+GO:0072487	0.017493	4.045971	0.000000	MSL complex
+GO:1902562	0.017493	4.045971	0.000000	H4 histone acetyltransferase complex
+GO:1902493	0.017493	4.045971	0.559616	acetyltransferase complex
+GO:0046536	0.017493	4.045971	2.974679	dosage compensation complex
+GO:0044391	0.014577	4.228293	3.135494	ribosomal subunit
+GO:0000785	0.014577	4.228293	4.041295	chromatin
+GO:0016607	0.013120	4.333653	1.673976	nuclear speck
+GO:0030532	0.011662	4.451436	0.000000	small nuclear ribonucleoprotein complex
+GO:0035062	0.011662	4.451436	0.117783	omega speckle
+GO:0120114	0.011662	4.451436	3.380144	Sm-like protein family complex
+GO:0097525	0.010204	4.584967	0.133531	spliceosomal snRNP complex
+GO:0015934	0.010204	4.584967	0.356675	large ribosomal subunit
+GO:1902555	0.008746	4.739118	0.000000	endoribonuclease complex
+GO:0061695	0.008746	4.739118	1.252763	transferase complex, transferring phosphorus-containing groups
+GO:1905348	0.008746	4.739118	2.233592	endonuclease complex
+GO:0005697	0.008746	4.739118	3.646320	telomerase holoenzyme complex
+GO:0098798	0.008746	4.739118	3.667826	mitochondrial protein complex
+GO:0005654	0.008746	4.739118	4.552121	nucleoplasm
+GO:0048471	0.008746	4.739118	4.552121	perinuclear region of cytoplasm
+GO:0000333	0.007289	4.921440	0.000000	telomerase catalytic core complex
+GO:0035097	0.007289	4.921440	0.000000	histone methyltransferase complex
+GO:0043005	0.007289	4.921440	0.000000	neuron projection
+GO:0046540	0.007289	4.921440	0.000000	U4/U6 x U5 tri-snRNP complex
+GO:0120025	0.007289	4.921440	0.000000	plasma membrane bounded cell projection
+GO:0042575	0.007289	4.921440	0.182322	DNA polymerase complex
+GO:0022625	0.007289	4.921440	0.336472	cytosolic large ribosomal subunit
+GO:0097526	0.007289	4.921440	0.336472	spliceosomal tri-snRNP complex
+GO:0034708	0.007289	4.921440	1.435085	methyltransferase complex
+GO:0042995	0.007289	4.921440	4.734443	cell projection
+GO:0014069	0.005831	5.144583	0.000000	postsynaptic density
+GO:0035770	0.005831	5.144583	0.000000	ribonucleoprotein granule
+GO:0036464	0.005831	5.144583	0.000000	cytoplasmic ribonucleoprotein granule
+GO:0030677	0.005831	5.144583	0.405465	ribonuclease P complex
+GO:0015935	0.005831	5.144583	0.916291	small ribosomal subunit
+GO:0042382	0.005831	5.144583	2.484907	paraspeckles
+GO:0005681	0.005831	5.144583	4.051785	spliceosomal complex
+GO:0099572	0.005831	5.144583	4.307438	postsynaptic specialization
+GO:0099080	0.005831	5.144583	4.957586	supramolecular complex
+GO:0000781	0.004373	5.432265	0.000000	chromosome, telomeric region
+GO:0005655	0.004373	5.432265	0.000000	nucleolar ribonuclease P complex
+GO:0005762	0.004373	5.432265	0.000000	mitochondrial large ribosomal subunit
+GO:0005763	0.004373	5.432265	0.000000	mitochondrial small ribosomal subunit
+GO:0030686	0.004373	5.432265	0.000000	90S preribosome
+GO:0032040	0.004373	5.432265	0.000000	small-subunit processome
+GO:0097441	0.004373	5.432265	0.000000	basal dendrite
+GO:0000314	0.004373	5.432265	0.287682	organellar small ribosomal subunit
+GO:0030681	0.004373	5.432265	0.287682	multimeric ribonuclease P complex
+GO:0043186	0.004373	5.432265	0.287682	P granule
+GO:0030424	0.004373	5.432265	0.510826	axon
+GO:0030425	0.004373	5.432265	0.510826	dendrite
+GO:0070578	0.004373	5.432265	0.693147	RISC-loading complex
+GO:0000315	0.004373	5.432265	0.847298	organellar large ribosomal subunit
+GO:0005682	0.004373	5.432265	0.847298	U5 snRNP
+GO:0090661	0.004373	5.432265	2.484907	box H/ACA telomerase RNP complex
+GO:0030684	0.004373	5.432265	4.339467	preribosome
+GO:0072562	0.004373	5.432265	5.245268	blood microparticle
+GO:0098687	0.004373	5.432265	5.245268	chromosomal region
+GO:0000243	0.002915	5.837730	0.000000	commitment complex
+GO:0000811	0.002915	5.837730	0.000000	GINS complex
+GO:0005786	0.002915	5.837730	0.000000	signal recognition particle, endoplasmic reticulum targeting
+GO:0005886	0.002915	5.837730	0.000000	plasma membrane
+GO:0016282	0.002915	5.837730	0.000000	eukaryotic 43S preinitiation complex
+GO:0030678	0.002915	5.837730	0.000000	mitochondrial ribonuclease P complex
+GO:0031261	0.002915	5.837730	0.000000	DNA replication preinitiation complex
+GO:0031379	0.002915	5.837730	0.000000	RNA-directed RNA polymerase complex
+GO:0033290	0.002915	5.837730	0.000000	eukaryotic 48S preinitiation complex
+GO:0043025	0.002915	5.837730	0.000000	neuronal cell body
+GO:1990572	0.002915	5.837730	0.000000	TERT-RMRP complex
+GO:0072563	0.002915	5.837730	0.405465	endothelial microparticle
+GO:0000932	0.002915	5.837730	0.693147	P-body
+GO:0005684	0.002915	5.837730	0.693147	U2-type spliceosomal complex
+GO:0005689	0.002915	5.837730	0.693147	U12-type spliceosomal complex
+GO:0022627	0.002915	5.837730	0.693147	cytosolic small ribosomal subunit
+GO:0030880	0.002915	5.837730	1.098612	RNA polymerase complex
+GO:0005685	0.002915	5.837730	1.252763	U1 snRNP
+GO:0005686	0.002915	5.837730	1.252763	U2 snRNP
+GO:0005688	0.002915	5.837730	1.252763	U6 snRNP
+GO:0005683	0.002915	5.837730	1.386294	U7 snRNP
+GO:0000172	0.002915	5.837730	2.803360	ribonuclease MRP complex
+GO:1990742	0.002915	5.837730	3.020425	microvesicle
+GO:0035363	0.002915	5.837730	3.178054	histone locus body
+GO:0048500	0.002915	5.837730	4.744932	signal recognition particle
+GO:0070993	0.002915	5.837730	4.744932	translation preinitiation complex
+GO:0071254	0.002915	5.837730	4.744932	cytoplasmic U snRNP body
+GO:0032993	0.002915	5.837730	4.766438	protein-DNA complex
+GO:0016020	0.002915	5.837730	5.650733	membrane
+GO:0044297	0.002915	5.837730	5.650733	cell body
+GO:0045177	0.002915	5.837730	5.650733	apical part of cell
