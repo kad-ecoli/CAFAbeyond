@@ -6,6 +6,7 @@ In particular, we test the suitability of:
 3. Expanding target source from a few selected model organisms to the whole [Swiss-Prot](https://www.uniprot.org/uniprot/?query=reviewed:yes), [UniRef50](https://www.uniprot.org/uniref/?query=&fil=identity:0.5), [UniRef90](https://www.uniprot.org/uniref/?query=&fil=identity:0.9), or [UniProt reference proteome](https://www.uniprot.org/uniprot/?query=proteome%3a(reference%3ayes)).
 4. Including GO annotations with high-throughput experimental evidences, as well as UniProt keyword-derived IEA terms associated with experimental literature.
 5. Implementation of alternative baseline methods.
+6. Inclusion of RNA.
 
 ## Dataset ##
 * UniProt 2021_02 (April 7, 2021)
@@ -103,6 +104,19 @@ The exclusion of HTP annotation denies the inclusion of certain targets for term
 ## [5. Baseline](https://github.com/kad-ecoli/baseline) ##
 
 See [our repo](https"//github.com/kad-ecoli/baseline) for alternative implementation of baseline methods.
+
+## [6. RNA](6_RNA) ##
+
+Apart from proteins function annotation, GO terms are also used for RNA function annotation in the RNAcentral database. We calculate the number of targets that can be used for function assessment based on growth period of t0 to t1:
+
+| Type |  NK  |  LK  |  PK  |  All |
+| :--: | :--: | :--: | :--: | :--: |
+|   F  |  47  |  13  |  70  |  130 |
+|   P  |  57  |   2  |  93  |  152 |
+|   C  |  39  |  11  |   5  |   55 |
+|  All |  143 |  26  |  168 |  337 |
+
+This table suggests that there are enough non-coding RNAs aquiring new GO annotations for assessment purpose, at least for the BP aspect. We note, however, that newly acquired annotations for MF and CC are highly redundant. In particular, among the 130 MF targets, 108 (83%) of them have GO:0003730 "mRNA 3'-UTR binding" and GO:1903231 "mRNA binding involved in posttranscriptional gene silencing" as the only leaf terms. Among the 55 CC targets, 50 (91%) of them have GO:0070062 "extracellular exosome" as the only leaf term. On the other hand, newly acquired BO terms are diverse and can be used for evaluation purpose. 
 
 ## License ##
 
