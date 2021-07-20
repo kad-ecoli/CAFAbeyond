@@ -11,6 +11,9 @@ Output:
     goa_uniprot_all.HTP     - positive annotation with HTP,HDA,HMP,HGI,HEP
     goa_uniprot_all.HTP.NOT - negative annotation with HTP,HDA,HMP,HGI,HEP
     goa_uniprot_all.species - accessions and taxon with the above evidence codes
+
+Option:
+    -db=RNAcentral          - parse RNAcentral entry rather than UniProtKB entry
 '''
 
 # GAF2.1 files have the suffix .gaf and contain the following columns:
@@ -38,7 +41,7 @@ import gzip
 import sys
 
 def curate_GAF(infile,outfileEXP,outfileEXPnot,outfileHTP,outfileHTPnot,
-    outfileSpecies):
+    outfileSpecies, db="UniProtKB"):
     target_list=[]
     outEXP=''
     outEXPnot=''
@@ -51,7 +54,7 @@ def curate_GAF(infile,outfileEXP,outfileEXPnot,outfileHTP,outfileHTPnot,
     EXP_set={'EXP','IDA','IPI','IMP','IGI','IEP','TAS','IC'}
     HTP_set={'HTP','HDA',      'HMP','HGI','HEP'}
     for line in fp.read().splitlines():
-        if not line.startswith("UniProtKB"):
+        if not line.startswith(db):
             continue
         items       =line.split('\t')
         DB_Object_ID=items[1]
@@ -92,9 +95,19 @@ def curate_GAF(infile,outfileEXP,outfileEXPnot,outfileHTP,outfileHTPnot,
     return
 
 if __name__=="__main__":
-    if len(sys.argv)!=7:
+    if len(sys.argv)<7:
         sys.stderr.write(docstring)
         exit()
 
-    curate_GAF(sys.argv[1],sys.argv[2],sys.argv[3],
-        sys.argv[4],sys.argv[5],sys.argv[6])
+    db="UniProtKB"
+    args=[]
+    for arg in sys.argv[1:]:
+        if arg.startswith('-db='):
+            db=arg[len("-db="):]
+        elif arg.startswith('-'):
+            sys.stderr.write("ERROR! Unknown option %s\n"%arg)
+        else:
+            args.append(arg)
+    infile,outfileEXP,outfileEXPnot,outfileHTP,outfileHTPnot,outfileSpecies=args
+    curate_GAF(infile,outfileEXP,outfileEXPnot,
+        outfileHTP,outfileHTPnot,outfileSpecies,db)
