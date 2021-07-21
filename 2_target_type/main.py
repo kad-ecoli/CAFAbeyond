@@ -22,8 +22,15 @@ def read_ic(naive_file_list):
 
 def calculate_target_ic(infile,ic_dict):
     per_target_ic_dict=dict()
-    fp=open(infile,'r')
-    for line in fp.read().splitlines():
+    lines=[]
+    filename_list=[infile]
+    if isinstance(infile,list):
+        filename_list=infile
+    for filename in filename_list:
+        fp=open(filename,'r')
+        lines+=fp.read().splitlines()
+        fp.close()
+    for line in lines:
         items=line.split('\t')
         target=items[0]
         newGOterms=items[1].split(',')
@@ -31,7 +38,6 @@ def calculate_target_ic(infile,ic_dict):
             oldGOterms=set(items[2].split(','))
             newGOterms=[GOterm for GOterm in newGOterms if not GOterm in oldGOterms]
         per_target_ic_dict[target]=sum([ic_dict[GOterm] for GOterm in newGOterms if GOterm in ic_dict])
-    fp.close()
     target_num=len(per_target_ic_dict)
     total_ic=sum(per_target_ic_dict.values())
     return target_num,total_ic/target_num
@@ -41,21 +47,26 @@ if __name__=="__main__":
                      datadir+"/naive.C"))
     all_target_ic_dict=dict(F=dict(),P=dict(),C=dict())
     for Aspect in "FPC":
-        for target_type in ["NK","LK","PK"]:
+        for target_type in ["NK","LK","PK","All"]:
+            filename=datadir+"/"+target_type+"."+Aspect
+            if target_type =="All":
+                filename=[datadir+"/NK."+Aspect,
+                          datadir+"/LK."+Aspect,
+                          datadir+"/PK."+Aspect]
             all_target_ic_dict[Aspect][target_type]=calculate_target_ic(
-                datadir+"/"+target_type+"."+Aspect,ic_dict)
+                filename,ic_dict)
 
     print("## Number of proteins (average IC per protein) ##")
-    print("| Type |      NK         |       LK       |        PK       |")
-    print("| :--: |     :--:        |      :--:      |       :--:      |")
+    print("| Type |      NK         |       LK       |        PK       |        All      |")
+    print("| :--: |     :--:        |      :--:      |       :--:      |       :--:      |")
     for Aspect in "FPC":
         line="|   %s  |"%Aspect
-        for target_type in ["NK","LK","PK"]:
+        for target_type in ["NK","LK","PK","All"]:
             target_num,average_ic=all_target_ic_dict[Aspect][target_type]
             line+=" %d (%.6f) |"%(target_num,average_ic)
         print(line)
     line="|  All |"
-    for target_type in ["NK","LK","PK"]:
+    for target_type in ["NK","LK","PK","All"]:
         total_target_num=0
         total_average_ic=0
         for Aspect in "FPC":

@@ -54,12 +54,12 @@ It is of interest to check if another type of target should also be considered:
 
 We check the number of targets (average per-target IC) in the whole UniProt-GOA with new annotations at t1=20210408, compared to t0=20200616. When calculating IC for PK targets, only newly annotated terms are considered.
 
-| Proteins  |      NK       |      LK       |     PK        |
-| :--:      |     :--:      |     :--:      |     :--:      |
-| MF        |  958  (8.609) |  809  (7.316) | 1708  (4.186) |
-| BP        | 1386 (14.960) |  365 (14.937) | 4266 (10.444) |
-| CC        | 1372  (5.516) |  335  (5.103) | 2085  (4.532) |
-| All 3     | 3716  (9.836) | 1509  (8.668) | 8059  (7.588) |
+| Proteins  |      NK       |      LK       |      PK       |      All 3     |
+| :--:      |     :--:      |     :--:      |     :--:      |      :--:      |
+| MF        |  958  (8.609) |  809  (7.316) | 1708  (4.186) |  3475  (6.134) |
+| BP        | 1386 (14.960) |  365 (14.937) | 4266 (10.444) |  6017 (11.757) |
+| CC        | 1372  (5.516) |  335  (5.103) | 2085  (4.532) |  3792  (4.938) |
+| All 3     | 3716  (9.836) | 1509  (8.668) | 8059  (7.588) | 13284  (8.340) |
 
 For the "All 3" row above, if a protein is a target in more than one Aspect, it is counted more than once.
 As shown in the above table, most (60%) new annotations are on PK targets with old (and shallower) annotations.
