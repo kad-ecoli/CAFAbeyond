@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 docstring='''
 This script counts the number of targets per target type
+
+option:
+    -datadir=../data    - specify the location of naive.{FPC} and {NK,LK,PK}.{FPC}
 '''
 import sys
 import os
@@ -43,6 +46,9 @@ def calculate_target_ic(infile,ic_dict):
     return target_num,total_ic/target_num
 
 if __name__=="__main__":
+    if len(sys.argv)>1:
+        if sys.argv[1].startswith('-datadir='):
+            datadir=sys.argv[1][len('-datadir='):]
     ic_dict=read_ic((datadir+"/naive.F", datadir+"/naive.P",
                      datadir+"/naive.C"))
     all_target_ic_dict=dict(F=dict(),P=dict(),C=dict())
