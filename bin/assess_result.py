@@ -27,7 +27,7 @@ def read_label():
                 items=line.split('\t')
                 target=items[0]
                 oldterms=root_dict[Aspect]
-                if target_type=="PK":
+                if len(items)>2:
                     oldterms=set([GOterm for GOterm in items[2].split(',')])
                 GOterms=set([GOterm for GOterm in items[1].split(','
                                ) if not GOterm in oldterms])

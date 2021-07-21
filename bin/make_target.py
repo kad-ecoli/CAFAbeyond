@@ -20,8 +20,8 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict,exclude):
         fp=open(filename,'r')
         for line in fp.read().splitlines():
             target,GOterms=line.split()
-            if GOterms==exclude:
-                continue
+            #if GOterms==exclude:
+            #    continue
             goa_old_dict[Aspect][target]=GOterms
         fp.close()
 
@@ -33,9 +33,12 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict,exclude):
                 continue
             goa_new_dict[Aspect][target]=GOterms
         fp.close()
-    target_old_set=set(list(goa_old_dict['F'].keys())+ \
-                       list(goa_old_dict['P'].keys())+ \
-                       list(goa_old_dict['C'].keys()))
+    target_old_list=[]
+    for Aspect in "FPC":
+        for target in goa_old_dict[Aspect]:
+            if goa_old_dict[Aspect][target]!=exclude:
+                target_old_list.append(target)
+    target_old_set=set(target_old_list)
 
     #### make NK target ####
     NK_target_list=[]
@@ -44,7 +47,11 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict,exclude):
         for target in goa_new_dict[Aspect]:
             if target in target_old_set:
                 continue
-            txt+="%s\t%s\n"%(target,goa_new_dict[Aspect][target])
+            if target in goa_old_dict[Aspect]: # has excluded terms
+                txt+="%s\t%s\t%s\n"%(target,goa_new_dict[Aspect][target],
+                                            goa_old_dict[Aspect][target])
+            else:
+                txt+="%s\t%s\n"%(target,goa_new_dict[Aspect][target])
             NK_target_list.append(target)
         filename=outfile_dict[Aspect]['NK']
         fp=open(filename,'w')
@@ -56,9 +63,14 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict,exclude):
     for Aspect in "FPC":
         txt=''
         for target in goa_new_dict[Aspect]:
-            if target in NK_target_set or target in goa_old_dict[Aspect]:
+            if target in NK_target_set or (target in goa_old_dict[Aspect] \
+                and goa_old_dict[Aspect][target]!=exclude):
                 continue
-            txt+="%s\t%s\n"%(target,goa_new_dict[Aspect][target])
+            if target in goa_old_dict[Aspect]: # has excluded terms
+                txt+="%s\t%s\t%s\n"%(target,goa_new_dict[Aspect][target],
+                                            goa_old_dict[Aspect][target])
+            else:
+                txt+="%s\t%s\n"%(target,goa_new_dict[Aspect][target])
         filename=outfile_dict[Aspect]['LK']
         fp=open(filename,'w')
         fp.write(txt)
@@ -68,7 +80,7 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict,exclude):
     for Aspect in "FPC":
         txt=''
         for target in goa_new_dict[Aspect]:
-            if not target in goa_old_dict[Aspect]:
+            if not target in goa_old_dict[Aspect] or goa_old_dict[Aspect][target]==exclude:
                 continue
             goa_old=goa_old_dict[Aspect][target]
             goa_new=goa_new_dict[Aspect][target]

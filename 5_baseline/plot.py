@@ -64,10 +64,10 @@ for s,metric in enumerate(["Fmax","Smin","wFmax","Fpmax","Spmin","wFpmax"]):
                 score_list.append(score)
                 #plt.text(m+(k-1)*width,score+0.01,("%.3f"%score).lstrip('0')[:4],
                 #    rotation=90,fontsize=fontsize,va="bottom",ha="center")
-                plt.text(m+(k-1)*width,0.01+0.1*(metric in ["Smin","Spmin"]),
+                plt.text(m+(k-1)*width,0.02+0.1*(metric in ["Smin","Spmin"]),
                     ("%.3f"%score).lstrip('0')[:4],
                     color='w' if Knowledge=="NK" else 'k',
-                    rotation=90,fontsize=fontsize,va="bottom",ha="center")
+                    rotation=90,fontsize=fontsize*0.8,va="bottom",ha="center")
             plt.bar(np.arange(len(score_list))+(k-1)*width,
                 score_list,align="center",width=width,label=Knowledge,
                 color=color_list[k],edgecolor='k')
