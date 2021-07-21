@@ -62,7 +62,7 @@ if __name__=="__main__":
             all_target_ic_dict[Aspect][target_type]=calculate_target_ic(
                 filename,ic_dict)
 
-    print("## Number of proteins (average IC per protein) ##")
+    print("## Number of targets (average IC per target) ##")
     print("| Type |      NK         |       LK       |        PK       |        All      |")
     print("| :--: |     :--:        |      :--:      |       :--:      |       :--:      |")
     for Aspect in "FPC":

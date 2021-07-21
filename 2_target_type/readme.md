@@ -1,4 +1,4 @@
-## Number of proteins (average IC per protein) ##
+## Number of targets (average IC per target) ##
 | Type |      NK         |       LK       |        PK       |        All      |
 | :--: |     :--:        |      :--:      |       :--:      |       :--:      |
 |   F  | 958 (8.608521) | 809 (7.316387) | 1708 (4.186253) | 3475 (6.134112) |

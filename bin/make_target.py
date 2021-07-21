@@ -5,10 +5,13 @@ make_target.py goa_old.F.is_a goa_old.P.is_a goa_old.C.is_a goa_new.F.is_a goa_n
     output the set of no knowledge (NK), limited knowledge (LK) and 
     prior knowledge (PK) targets in the following format:
     accession	new_terms	old_terms
+
+Option:
+    -exclude="GO:0003674,GO:0005488,GO:0005515"   - GO terms to exclude. Default is "protein binding".
 '''
 import sys
 
-def make_target(oldfile_dict,newfile_dict,outfile_dict):
+def make_target(oldfile_dict,newfile_dict,outfile_dict,exclude):
     #### read file ####
     goa_old_dict=dict(F=dict(),P=dict(),C=dict())
     goa_new_dict=dict(F=dict(),P=dict(),C=dict())
@@ -17,7 +20,7 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict):
         fp=open(filename,'r')
         for line in fp.read().splitlines():
             target,GOterms=line.split()
-            if GOterms=="GO:0003674,GO:0005488,GO:0005515":
+            if GOterms==exclude:
                 continue
             goa_old_dict[Aspect][target]=GOterms
         fp.close()
@@ -26,7 +29,7 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict):
         fp=open(filename,'r')
         for line in fp.read().splitlines():
             target,GOterms=line.split()
-            if GOterms=="GO:0003674,GO:0005488,GO:0005515":
+            if GOterms==exclude:
                 continue
             goa_new_dict[Aspect][target]=GOterms
         fp.close()
@@ -81,26 +84,36 @@ def make_target(oldfile_dict,newfile_dict,outfile_dict):
     return
 
 if __name__=="__main__":
-    if len(sys.argv)!=16:
+    exclude="GO:0003674,GO:0005488,GO:0005515"
+    args=[]
+    for arg in sys.argv[1:]:
+        if arg.startswith('-exclude='):
+            exclude=arg[len('-exclude='):]
+        elif arg.startswith('-'):
+            sys.stderr.write('ERROR! No such option %s\n'%arg)
+            exit()
+        else:
+            args.append(arg)
+    if len(args)!=15:
         sys.stderr.write(docstring)
         exit()
 
     oldfile_dict=dict()
     newfile_dict=dict()
     outfile_dict=dict(F=dict(),P=dict(),C=dict())
-    oldfile_dict['F']      =sys.argv[1]
-    oldfile_dict['P']      =sys.argv[2]
-    oldfile_dict['C']      =sys.argv[3]
-    newfile_dict['F']      =sys.argv[4]
-    newfile_dict['P']      =sys.argv[5]
-    newfile_dict['C']      =sys.argv[6]
-    outfile_dict['F']['NK']=sys.argv[7]
-    outfile_dict['P']['NK']=sys.argv[8]
-    outfile_dict['C']['NK']=sys.argv[9]
-    outfile_dict['F']['LK']=sys.argv[10]
-    outfile_dict['P']['LK']=sys.argv[11]
-    outfile_dict['C']['LK']=sys.argv[12]
-    outfile_dict['F']['PK']=sys.argv[13]
-    outfile_dict['P']['PK']=sys.argv[14]
-    outfile_dict['C']['PK']=sys.argv[15]
-    make_target(oldfile_dict,newfile_dict,outfile_dict)
+    oldfile_dict['F']      =args[0]
+    oldfile_dict['P']      =args[1]
+    oldfile_dict['C']      =args[2]
+    newfile_dict['F']      =args[3]
+    newfile_dict['P']      =args[4]
+    newfile_dict['C']      =args[5]
+    outfile_dict['F']['NK']=args[6]
+    outfile_dict['P']['NK']=args[7]
+    outfile_dict['C']['NK']=args[8]
+    outfile_dict['F']['LK']=args[9]
+    outfile_dict['P']['LK']=args[10]
+    outfile_dict['C']['LK']=args[11]
+    outfile_dict['F']['PK']=args[12]
+    outfile_dict['P']['PK']=args[13]
+    outfile_dict['C']['PK']=args[14]
+    make_target(oldfile_dict,newfile_dict,outfile_dict,exclude)

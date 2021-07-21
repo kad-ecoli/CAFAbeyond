@@ -36,7 +36,7 @@ $bindir/calculate_ic.py $datadir/go-basic.obo $curdir/goa_rnacentral_all.F.is_a.
 $bindir/calculate_ic.py $datadir/go-basic.obo $curdir/goa_rnacentral_all.P.is_a.$old $curdir/naive.P
 $bindir/calculate_ic.py $datadir/go-basic.obo $curdir/goa_rnacentral_all.C.is_a.$old $curdir/naive.C
 
-$bindir/make_target.py \
+$bindir/make_target.py -exclude= \
     $curdir/goa_rnacentral_all.F.is_a.$old \
     $curdir/goa_rnacentral_all.P.is_a.$old \
     $curdir/goa_rnacentral_all.C.is_a.$old \
@@ -48,17 +48,4 @@ $bindir/make_target.py \
     $curdir/PK.F $curdir/PK.P $curdir/PK.C
 
 
-echo "| Type |  NK  |  LK  |  PK  |  All |"  > $curdir/README.md
-echo "| :--: | :--: | :--: | :--: | :--: |" >> $curdir/README.md
-for Aspect in `echo F P C`;do
-    NK=` cat $curdir/NK.$Aspect|wc -l`
-    LK=` cat $curdir/LK.$Aspect|wc -l`
-    PK=` cat $curdir/PK.$Aspect|wc -l`
-    ALL=`cat $curdir/*K.$Aspect|wc -l`
-    echo "|   $Aspect  |  $NK  |  $LK   |  $PK  | $ALL |"
-done >> $curdir/README.md
-NK=` cat $curdir/NK.*|wc -l`
-LK=` cat $curdir/LK.*|wc -l`
-PK=` cat $curdir/PK.*|wc -l`
-ALL=`cat $curdir/*K.*|wc -l`
-echo "|  All |  $NK |  $LK  |  $PK |  $ALL |" >> $curdir/README.md
+$rootdir/2_target_type/main.py -datadir=$curdir > $curdir/readme.md
