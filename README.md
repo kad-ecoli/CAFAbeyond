@@ -107,14 +107,14 @@ See [our repo](https"//github.com/kad-ecoli/baseline) for alternative implementa
 
 ## [6. RNA](6_RNA) ##
 
-Apart from proteins function annotation, GO terms are also used for RNA function annotation in the RNAcentral database. We calculate the number of targets that can be used for function assessment based on growth period of t0 to t1:
+Apart from proteins function annotation, GO terms are also used for RNA function annotation in the RNAcentral database. We calculate the number of targets  (average per-target IC) that can be used for function assessment based on growth period of t0 to t1:
 
-| Type |  NK  |  LK  |  PK  |  All |
-| :--: | :--: | :--: | :--: | :--: |
-|   F  |  47  |  13  |  70  |  130 |
-|   P  |  57  |   2  |  93  |  152 |
-|   C  |  39  |  11  |   5  |   55 |
-|  All |  143 |  26  |  168 |  337 |
+| RNA (IC) |    NK        |    LK       |    PK        |    All       |
+|  :--:    |   :--:       |   :--:      |   :--:       |   :--:       |
+|    F     |  47 ( 3.195) |  13 (2.839) |  70 ( 2.070) | 130 ( 2.554) |
+|    P     |  57 (11.823) |   2 (9.282) |  93 (11.875) | 152 (11.821) |
+|    C     |  39 ( 4.822) |  11 (4.822) |   5 ( 4.424) |  55 ( 4.786) |
+|  All     | 143 ( 7.078) |  26 (4.174) | 168 ( 7.568) | 337 ( 7.098) |
 
 This table suggests that there are enough non-coding RNAs aquiring new GO annotations for assessment purpose, at least for the BP aspect. We note, however, that newly acquired annotations for MF and CC are highly redundant. In particular, among the 130 MF targets, 108 (83%) of them have GO:0003730 "mRNA 3'-UTR binding" and GO:1903231 "mRNA binding involved in posttranscriptional gene silencing" as the only leaf terms. Among the 55 CC targets, 50 (91%) of them have GO:0070062 "extracellular exosome" as the only leaf term. On the other hand, newly acquired BO terms are diverse and can be used for evaluation purpose. 
 
