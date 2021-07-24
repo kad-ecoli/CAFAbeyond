@@ -103,13 +103,13 @@ The exclusion of HTP annotation denies the inclusion of certain targets for term
 
 ## [5. Baseline](5_baseline) ##
 
-We test 14 different baseline methods based on database statistics (``naive1``, ``naive2``, ``naive3``), prior existing computational annotation (``uniprotgoa``) or sequence homology search (``blastevalue``, ``blastlocal``, ``blastevalue``, ``blastscore1``, ``blastscore2``, ``blastscore3``, ``blastglobal1``, , ``blastglobal2``, , ``blastglobal3``, , ``blastrank``, , ``blastfreq``), as well as two more advanced homology based predictor (``blastmetago``, ``blastnetgo``), as defined [here](https"//github.com/kad-ecoli/baseline). 
+We test 14 different baseline methods based on database statistics (``naive1``, ``naive2``, ``naive3``), prior existing computational annotation (``uniprotgoa``) or sequence homology search (``blastevalue``, ``blastlocal``, ``blastevalue``, ``blastscore1``, ``blastscore2``, ``blastscore3``, ``blastglobal1``, , ``blastglobal2``, , ``blastglobal3``, , ``blastrank``, , ``blastfreq``), as well as two more advanced homology based predictor (``blastmetago``, ``blastnetgo``), as defined [here](5_baseline). 
 The homology based baseline only uses blast here; Needleman-Wunsch global sequence alignment (NW-align) and Diamond were separately tested on the smaller CAFA3 dataset but were found not to introduce much improvement over blast under the default searching parameter settings, as shown [here](https"//github.com/kad-ecoli/baseline).
 The prediction performance is evaluated on newly acquired GO annotations on t1 compared to t0. Prior existing GO annotations available at t0 are excluded from both ground truth and prediction during assessment. As shown in the following figures for Fmax, IC-weighted Fmax (wFmax), and a modified IC-weighted Fmax where weighing is applied to both GO terms and targets (w'Fmax), the current blast baseline (``blastlocal``, which is based on maximum local sequence identity) implemented by CAFA is consistently outperformed by ``blastfreq``, which predicts GO terms based on the number of blast hits annotated to a GO term divided by all hits.
 
-![Fmax_full.png](Fmax_full.png?raw=true "Fmax_full.png")
-![wFmax_full.png](wFmax_full.png?raw=true "wFmax_full.png")
-![wFpmax_full.png](wFpmax_full.png?raw=true "wFpmax_full.png")
+![5_baseline/Fmax_full.png](5_baseline/Fmax_full.png?raw=true "Fmax_full.png")
+![5_baseline/wFmax_full.png](5_baseline/wFmax_full.png?raw=true "wFmax_full.png")
+![5_baseline/wFpmax_full.png](5_baseline/wFpmax_full.png?raw=true "wFpmax_full.png")
 
 ## [6. RNA](6_RNA) ##
 
