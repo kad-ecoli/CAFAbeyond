@@ -74,9 +74,9 @@ In the following table, the number of NK+LK+PK targets is larger than the number
 |   :--:             |  :--:             | :--:                    | :--:                         | :--:        | :--:        | :--:        |
 | CAFA4              |     97999 (0.05%) | 6666   (65%)            |  15   (4%)                   |  945  (25%) | 1114  (74%) | 6485  (80%) |
 | Swiss-Prot         |    564638 (0.26%) | 7803   (76%)            | 339  (88%)                   | 2197  (59%) | 1208  (80%) | 6925  (86%) |
-| UniRef50          |  50105705   (23%) | 6840   (67%)            | 261  (67%)                   | 1945  (52%) | 1097  (73%) | 5942  (74%) |
+| UniRef50           |  50105705   (23%) | 6840   (67%)            | 261  (67%)                   | 1945  (52%) | 1097  (73%) | 5942  (74%) |
 | Reference Proteome |  60181258   (28%) | 9211   (90%)            | 149  (39%)                   | 2782  (75%) | 1436  (95%) | 7548  (94%) |
-| UniRef90          | 133971487   (62%) | 8238   (80%)            | 320  (83%)                   | 2697  (73%) | 1297  (86%) | 6820  (85%) |
+| UniRef90           | 133971487   (62%) | 8238   (80%)            | 320  (83%)                   | 2697  (73%) | 1297  (86%) | 6820  (85%) |
 | UniProt            | 214971037  (100%) | 10270 (100%)            | 387 (100%)                   | 3716 (100%) | 1509 (100%) | 8059 (100%) |
 
 Although the CAFA4 dataset already includes the majority (65%) of proteins with new terms, especially LK targets (74%) and PK targets (80%), it only covers a relative small fractions (25% and 4% respectively) of NK targets and species with new annotations. Expansion of CAFA4 dataset to the whole Swiss-Prot and/or UniProt Reference Proteome, if not the whole UniProt, is needed for more comprehesive assessment of NK targets in more diverse species. While this means many of the included species will have <10 evaluated targets and cannot be used for reliable species-specific statistics, it is not a problem for obtaining overall statistics across all species.
@@ -101,9 +101,15 @@ CAFA excludes high-throughput (HTP) evidence codes, including: HTP, HDA, HMP, HG
 
 The exclusion of HTP annotation denies the inclusion of certain targets for term-centric assessment, which was based on high throughput experiments previously, e.g. in CAFA-PI. More importantly, it creates problems for protein-centric assessment as well. Some targets defined solely by an EXP evidence may not be a valid target defined by EXP+HTP evidences due to existence of old HTP annotations later confirmed by EXP evidence, especially in the case of CC as shown above. For example, O74456 was annotated with CC term GO:0005634 "nucleus" at t0 by HDA evidence; at t0, GO:0005634 is annotated to O74456 by both HDA and IPI evidence. Therefore, if HTP is not considered, O74456 is a valid CC target for prediction of GO:0005634, even though this term was already present at t0.
 
-## [5. Baseline](https://github.com/kad-ecoli/baseline) ##
+## [5. Baseline](5_baseline) ##
 
-See [our repo](https"//github.com/kad-ecoli/baseline) for alternative implementation of baseline methods.
+We test 14 different baseline methods based on database statistics (``naive1``, ``naive2``, ``naive3``), prior existing computational annotation (``uniprotgoa``) or sequence homology search (``blastevalue``, ``blastlocal``, ``blastevalue``, ``blastscore1``, ``blastscore2``, ``blastscore3``, ``blastglobal1``, , ``blastglobal2``, , ``blastglobal3``, , ``blastrank``, , ``blastfreq``), as well as two more advanced homology based predictor (``blastmetago``, ``blastnetgo``), as defined [here](https"//github.com/kad-ecoli/baseline). 
+The homology based baseline only uses blast here; Needleman-Wunsch global sequence alignment (NW-align) and Diamond were separately tested on the smaller CAFA3 dataset but were found not to introduce much improvement over blast under the default searching parameter settings, as shown [here](https"//github.com/kad-ecoli/baseline).
+The prediction performance is evaluated on newly acquired GO annotations on t1 compared to t0. Prior existing GO annotations available at t0 are excluded from both ground truth and prediction during assessment. As shown in the following figures for Fmax, IC-weighted Fmax (wFmax), and a modified IC-weighted Fmax where weighing is applied to both GO terms and targets (w'Fmax), the current blast baseline (``blastlocal``, which is based on maximum local sequence identity) implemented by CAFA is consistently outperformed by ``blastfreq``, which predicts GO terms based on the number of blast hits annotated to a GO term divided by all hits.
+
+![Fmax_full.png](Fmax_full.png?raw=true "Fmax_full.png")
+![wFmax_full.png](wFmax_full.png?raw=true "wFmax_full.png")
+![wFpmax_full.png](wFpmax_full.png?raw=true "wFpmax_full.png")
 
 ## [6. RNA](6_RNA) ##
 
