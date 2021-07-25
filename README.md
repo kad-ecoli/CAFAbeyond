@@ -24,6 +24,8 @@ cd 1_exclude_protein_binding/; ./main.py > readme.md ; cd ..
 cd 2_target_type/            ; ./main.py > readme.md ; cd ..
 cd 3_target_database/        ; ./main.py > readme.md ; cd ..
 cd 4_HTP/                    ; ./main.sh             ; cd ..
+cd 5_baseline/               ; ./main.sh             ; cd ..
+cd 6_RNA/                    ; ./main.sh             ; cd ..
 ```
 
 ## [1. GO term exclusion](1_exclude_protein_binding/) ##
@@ -122,7 +124,9 @@ Apart from proteins function annotation, GO terms are also used for RNA function
 |    C     |  39 ( 4.822) |  11 (4.822) |   5 ( 4.424) |  55 ( 4.786) |
 |  All     | 143 ( 7.078) |  26 (4.174) | 168 ( 7.568) | 337 ( 7.098) |
 
-This table suggests that there are enough non-coding RNAs aquiring new GO annotations for assessment purpose, at least for the BP aspect. We note, however, that newly acquired annotations for MF and CC are highly redundant. In particular, among the 130 MF targets, 108 (83%) of them have GO:0003730 "mRNA 3'-UTR binding" and GO:1903231 "mRNA binding involved in posttranscriptional gene silencing" as the only leaf terms. Among the 55 CC targets, 50 (91%) of them have GO:0070062 "extracellular exosome" as the only leaf term. On the other hand, newly acquired BO terms are diverse and can be used for evaluation purpose. 
+This table suggests that there are enough non-coding RNAs aquiring new GO annotations for assessment purpose, at least for the BP aspect. We note, however, that newly acquired annotations for MF and CC are highly redundant. In particular, among the 130 MF targets, 108 (83%) of them have GO:0003730 "mRNA 3'-UTR binding" and GO:1903231 "mRNA binding involved in posttranscriptional gene silencing" as the only leaf terms. Among the 55 CC targets, 50 (91%) of them have GO:0070062 "extracellular exosome" as the only leaf term. On the other hand, newly acquired BO terms are diverse and can be used for evaluation purpose.
+
+Note that unlike the above analyses on proteins where MF targets with GO:0005515 "protein binding" as the only leaf term are excluded, no exclusion of the "protein binding" term is performed for RNA MF targets. This is because "protein binding" is not a particularly common leaf term for RNA (IC=2.17) and is associated with ~11% experimentally annotated MF targets, 
 
 ## License ##
 
