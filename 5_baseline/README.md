@@ -146,3 +146,18 @@ target by the total IC of its ground-truth annotations.
 ![Fpmax_full.png](Fpmax_full.png?raw=true "Fpmax_full.png")
 ![Spmin_full.png](Spmin_full.png?raw=true "Spmin_full.png")
 ![wFpmax_full.png](wFpmax_full.png?raw=true "wFpmax_full.png")
+
+The semantic distance (Smin, S'min) and IC-weighted F-measure (wFmax and wF'max) are
+complementary to each other even though both types of metrics weights GO terms by IC.
+In particular, while (IC-weighted) F-measure have equal emphasis on precision and
+sensitivity, semantic distance puts more emphasis on high precision / low sensitive
+predictions obtained at high confidence score cutoff. To illustrate this point, the
+following is the distribution of confidence score cutoffs corresponding to the best
+Fmax, wFmax and Smin by CAFA3 predictors with target coverage >=90%. For all three
+GO aspects and all two target types evaluated in CAFA3 the optimal cutoffs for wFmax
+are similar to that for Fmax and are consistently lower than that for Smin. An 
+intuitive explanation for this phenomenon is that it is more difficult to obtain
+low remaining uncertainty (i.e. correctly cover all ground truth annotations) than
+to obtain low misinformation (e.g. by not predicting anything).
+
+![check_cutoff.png](check_cutoff.png?raw=true "check_cutoff.png")
