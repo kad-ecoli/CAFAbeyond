@@ -41,7 +41,9 @@ local sequence identity between target sequence and the ``t``-th blast hit
 with term ``g``. Local identity is calculated as
 ``localID_t=nident_t/length_t``, where ``nident_t`` is the number of identical
 residues between target and ``t``-th hit while ``length_t`` is the number of
-aligned residues between the target and the hit.
+aligned residues between the target and the hit. See our
+[wiki page on blastp](https://github.com/kad-ecoli/CAFAbeyond/wiki/Scores-in-blastp)
+for details on various scores reported by blastp, including local identity.
 
 Another three scores based on global seuqence identities are also implemented:
 ```
