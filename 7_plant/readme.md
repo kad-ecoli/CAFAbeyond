@@ -1,0 +1,10 @@
+# plant targets #
+* NK target F aspect: 307 targets;	122 from Arabidopsis thaliana (3702);	24 from Oryza sativa Japonica Group (39947)
+* NK target P aspect: 333 targets;	123 from Arabidopsis thaliana (3702);	28 from Oryza sativa Japonica Group (39947)
+* NK target C aspect: 171 targets;	93 from Arabidopsis thaliana (3702);	22 from Oryza sativa Japonica Group (39947)
+* LK target F aspect: 344 targets;	341 from Arabidopsis thaliana (3702);	1 from Zea mays (4577)
+* LK target P aspect: 76 targets;	76 from Arabidopsis thaliana (3702)
+* LK target C aspect: 26 targets;	22 from Arabidopsis thaliana (3702);	1 from Gossypium hirsutum (3635)
+* PK target F aspect: 407 targets;	403 from Arabidopsis thaliana (3702);	1 from Nicotiana tabacum (4097)
+* PK target P aspect: 249 targets;	239 from Arabidopsis thaliana (3702);	2 from Gossypium hirsutum (3635)
+* PK target C aspect: 69 targets;	69 from Arabidopsis thaliana (3702)
