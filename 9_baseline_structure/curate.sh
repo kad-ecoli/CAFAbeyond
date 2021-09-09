@@ -83,3 +83,24 @@ for C in `cat $curdir/data/xyz/list`;do
     $curdir/bin/pdb2xyz -dir $curdir/data/pdb/ $curdir/data/xyz/$C.list -suffix .pdb.gz | gzip - > $curdir/data/xyz/$C.xyz.gz 
 done
 rm -rf $curdir/data/pdb
+
+cd $curdir/
+wget https://version-11-0.string-db.org/mapping_files/uniprot/all_organisms.uniprot_2_string.2018.tsv.gz -O all_organisms.uniprot_2_string.2018.tsv.gz 
+for species in `cat $curdir/data/uniprot_sprot_exp.species |cut -f2 |sort|uniq`;do
+    echo $species
+    wget https://stringdb-static.org/download/protein.links.v11.0/$species.protein.links.v11.0.txt.gz -O $species.protein.links.v11.0.txt.gz
+    zgrep -P "^$species\t" all_organisms.uniprot_2_string.2018.tsv.gz |sed 's/|/\t/g'|cut -f2,4 > $species.uniprot_2_string.tsv
+    $curdir/bin/string2uniprot.py $species.protein.links.v11.0.txt.gz $species.uniprot_2_string.tsv $species.uniprot.links
+    rm $species.protein.links.v11.0.txt.gz $species.uniprot_2_string.tsv
+done
+rm all_organisms.uniprot_2_string.2018.tsv.gz 
+
+cmd="cat "
+for species in `cat $curdir/data/uniprot_sprot_exp.species |cut -f2 |sort|uniq`;do
+    filename=$species.uniprot.links
+    if [ -s "$filename" ];then
+        cmd="$cmd $filename"
+    fi
+done
+$cmd |gzip - > $curdir/data/uniprot.links.gz
+rm *.uniprot.links

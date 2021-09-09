@@ -27,13 +27,8 @@ tmalignfreq_1
 tmalignID_3
 tmalignTM_3
 tmalignTMID_3
+ppi_1
 "
-#method_list="
-#tmalignfreq_1
-#tmalignID_3
-#tmalignTM_3
-#tmalignTMID_3
-#"
 
 for method in $method_list;do
     if [ ! -s "${method}_all.txt" ];then
