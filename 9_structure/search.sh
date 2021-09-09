@@ -10,6 +10,8 @@ bindir="$rootdir/bin"
 cd $curdir/
 $curdir/bin/blastp -db $curdir/data/uniprot_sprot_exp.fasta -outfmt '6 qacc qlen sacc slen evalue bitscore length nident' -query $curdir/input/target.fasta -out $curdir/input/target.blastp
 $curdir/bin/psiblast -db $curdir/data/uniprot_sprot_exp.fasta -outfmt '6 qacc qlen sacc slen evalue bitscore length nident' -query $curdir/input/target.fasta -out $curdir/input/target.psiblast -num_iterations 3
+gzip -f $curdir/input/target.blastp
+gzip -f $curdir/input/target.psiblast
 
 cd $curdir/input/pdb
 mkdir -p $curdir/tmalign
@@ -18,3 +20,4 @@ for target in `cat $curdir/input/target.list`;do
 done
 
 cat  $curdir/tmalign/*.tm | grep -P "(\t1\.0000\t)|(\t0\.[5-9]\d{3}\t)" > $curdir/input/target.tm
+gzip -f $curdir/input/target.tm

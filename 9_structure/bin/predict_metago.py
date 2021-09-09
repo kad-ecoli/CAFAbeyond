@@ -6,9 +6,10 @@ output:
     metago_1_9606_go.txt
 '''
 import sys
-from os.path import dirname, basename, abspath
+from os.path import dirname, basename, abspath, isfile
 from subprocess import Popen,PIPE
 from math import exp
+import gzip
 bindir=dirname(abspath(__file__))
 rootdir=dirname(bindir)
 datdir=rootdir+"/data"
@@ -27,7 +28,10 @@ def read_annotation():
 
 def read_blast(infile):
     blast_dict=dict()
-    fp=open(infile,'r')
+    if isfile(infile):
+        fp=open(infile,'r')
+    else:
+        fp=gzip.open(infile+".gz",'r')
     for line in fp:
         items=line.split('\t')
         if len(items)<8:
