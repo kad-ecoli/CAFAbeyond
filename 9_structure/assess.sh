@@ -23,6 +23,7 @@ blastfreq_1
 blastmetago_1
 blastnetgo_1
 metago_1
+metago_2
 tmalignfreq_1
 tmalignID_3
 tmalignTM_3
