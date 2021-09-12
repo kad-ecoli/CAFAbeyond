@@ -44,6 +44,8 @@ $bindir/posterior_training_terms.py $curdir/data/go-basic.obo $curdir/data/unipr
 $bindir/posterior_training_terms.py $curdir/data/go-basic.obo $curdir/data/uniprot_sprot_exp.P $curdir/data/posterior.P
 $bindir/posterior_training_terms.py $curdir/data/go-basic.obo $curdir/data/uniprot_sprot_exp.C $curdir/data/posterior.C
 
+#### download structurer data ####
+
 curl -s ftp://ftp.ebi.ac.uk/pub/databases/alphafold/|grep -ohP "\w+_\d+_\w+\.tar"|uniq > tar.list
 mkdir -p $curdir/input/pdb
 mkdir -p $curdir/data/pdb
@@ -84,6 +86,8 @@ for C in `cat $curdir/data/xyz/list`;do
 done
 rm -rf $curdir/data/pdb
 
+#### download PPI data ####
+
 cd $curdir/
 wget https://version-11-0.string-db.org/mapping_files/uniprot/all_organisms.uniprot_2_string.2018.tsv.gz -O all_organisms.uniprot_2_string.2018.tsv.gz 
 for species in `cat $curdir/data/uniprot_sprot_exp.species |cut -f2 |sort|uniq`;do
@@ -104,3 +108,46 @@ for species in `cat $curdir/data/uniprot_sprot_exp.species |cut -f2 |sort|uniq`;
 done
 $cmd |gzip - > $curdir/data/uniprot.links.gz
 rm *.uniprot.links
+
+#### download coexpression data ####
+
+cd $curdir
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz -O idmapping.dat.gz
+zcat idmapping.dat.gz |grep "\sGeneID\s" |cut -f1,3 > GeneIDmapping.tsv
+rm idmapping.dat.gz
+$curdir/bin/subset_mapping.py $curdir/input/target.list GeneIDmapping.tsv target.GeneID.tsv
+$curdir/bin/subset_mapping.py $curdir/data/uniprot_sprot_exp.list GeneIDmapping.tsv uniprot_sprot_exp.GeneID.tsv
+rm GeneIDmapping.tsv
+wget https://coxpresdb.jp/download/ -O coxpresdb.html
+wget https://atted.jp/download/     -O atted.html
+for link in `grep -ohP "\/download\/\S+d.zip" coxpresdb.html |cut -f1 -d'"'|grep -P "(-[mcu]\.)"|grep -P "\/$"`;do
+    target=`echo $link|cut -f3 -d/`
+    wget "https://coxpresdb.jp$link" -O $target.zip
+done
+for link in `grep -ohP "\/download\/\S+?\/coex\/\S+?d.zip" atted.html`;do
+    target=`echo $link|cut -f3 -d/`
+    wget "https://atted.jp$link" -O $target.zip
+done
+for filename in `ls *zip`;do
+    prefix=`echo $filename|cut -f1 -d.`
+    unzip $filename
+    folder="coxpres_"`echo $prefix|cut -f2 -d-`
+    if [ ! -d "$folder" ];then
+	mkdir $folder
+    fi
+    for line in `sed 's/\t/@/g' target.GeneID.tsv`;do
+	accession=`echo $line|cut -f1 -d@`
+	GeneID=`echo $line|cut -f2 -d@`
+	target=`ls $prefix.*.d/$GeneID 2>/dev/null`
+	if [ ! -z "$target" ];then
+	    mv $target $folder/$accession
+	fi
+    done
+    rm -rf $prefix\.*\.d
+done
+rm *.zip
+for suffix in `echo r u m`;do
+    $curdir/bin/batch_uniprot2GeneID.py target.GeneID.tsv uniprot_sprot_exp.GeneID.tsv coxpres_$suffix/ $curdir/data/coxpres_$suffix.gz
+done
+rm atted.html coxpresdb.html target.GeneID.tsv uniprot_sprot_exp.GeneID.tsv
+rm -rf coxpres_m coxpres_r coxpres_u

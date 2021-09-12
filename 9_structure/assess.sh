@@ -29,6 +29,9 @@ tmalignID_3
 tmalignTM_3
 tmalignTMID_3
 ppi_1
+coxpres_1
+coxpres_2
+coxpres_3
 "
 
 for method in $method_list;do

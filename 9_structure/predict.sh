@@ -12,3 +12,7 @@ $curdir/bin/predict_goa.py       $curdir/input/target.list $curdir/input/target.
 $curdir/bin/predict_metago.py    $curdir/input/target.blastp $curdir/input/target.psiblast _all.txt
 $curdir/bin/predict_ppi.py       $curdir/input/target.list ppi_1_all.txt
 $curdir/bin/predict_tmalign.py   $curdir/input/target.tm _all.txt
+
+$curdir/bin/predict_coxpres.py $curdir/input/target.list $curdir/data/coxpres_r.gz coxpres_3_all.txt
+$curdir/bin/predict_coxpres.py $curdir/input/target.list $curdir/data/coxpres_m.gz coxpres_2_all.txt
+$curdir/bin/predict_coxpres.py $curdir/input/target.list $curdir/data/coxpres_u.gz coxpres_1_all.txt
