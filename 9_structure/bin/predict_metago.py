@@ -29,12 +29,15 @@ def read_annotation():
 def read_blast(infile):
     blast_dict=dict()
     if isfile(infile):
-        fp=open(infile,'r')
+        if infile.endswith(".gz"):
+            fp=gzip.open(infile,'r')
+        else:
+            fp=open(infile,'r')
     else:
         fp=gzip.open(infile+".gz",'r')
     for line in fp:
         items=line.split('\t')
-        if len(items)<8:
+        if len(items)!=8:
             continue
         qacc,qlen,sacc,slen,evalue,bitscore,length,nident=items
         qlen=float(qlen)
@@ -53,7 +56,7 @@ def read_blast(infile):
     fp.close()
     return blast_dict
 
-def write_output(blast_dict,psiblast_dict,annotation_dict,outfile):
+def write_output(blast_dict,psiblast_dict,annotation_dict,suffix):
     target_list=[]
     target_list+=[target for target in blast_dict.keys()]
     target_list+=[target for target in psiblast_dict.keys()]
